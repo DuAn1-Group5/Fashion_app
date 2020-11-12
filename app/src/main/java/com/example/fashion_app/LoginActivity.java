@@ -107,4 +107,8 @@ public class LoginActivity extends AppCompatActivity {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+    public void testgit(){
+        String a = "testgit";
+    }
 }
