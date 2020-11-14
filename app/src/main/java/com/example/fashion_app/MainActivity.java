@@ -8,24 +8,52 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.login.widget.ProfilePictureView;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer;
     TextView toolbar_title;
+    ImageView iv_header_nav;
+    TextView tv_NameHead, tv_EmailHead;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // anh xa view
         Toolbar myToolbar = findViewById(R.id.toolBar);
         toolbar_title = findViewById(R.id.toolbar_title);
+        drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        View headerView = navigationView.getHeaderView(0);
+        iv_header_nav = headerView.findViewById(R.id.iv_header_nav);
+        tv_NameHead = headerView.findViewById(R.id.tv_NameHead);
+        tv_EmailHead = headerView.findViewById(R.id.tv_EmailHead);
+
         setSupportActionBar(myToolbar);
 
         //myToolbar.setLogo(R.mipmap.app_book);
@@ -33,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         toolbar_title.setText("Home");
 
-        drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+
 
         ActionBarDrawerToggle toggle  = new ActionBarDrawerToggle(this, drawer,myToolbar,
                 R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -84,6 +111,10 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        layThongtinNguoiDung();
+
+
     }
 
     @Override
@@ -114,4 +145,34 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(menuItem);
     }
+
+    public void layThongtinNguoiDung(){
+        Intent intent = getIntent();
+        Bundle bundle = intent.getBundleExtra("infomation");
+        String email = bundle.getString("email", "Không có Email");
+        String name = bundle.getString("name", "Không có thông tin");
+        String avatar = bundle.getString("avatar", "");
+        tv_EmailHead.setText(email);
+        tv_NameHead.setText(name);
+
+        Picasso.get()
+                .load("https://graph.facebook.com/" + avatar+ "/picture?type=large")
+                .into(iv_header_nav);
+        //iv_header_nav.setImageBitmap(profilePic);
+    }
+
+    public static Bitmap getFacebookProfilePicture(String userID) throws SocketException, SocketTimeoutException, MalformedURLException, IOException, Exception
+    {
+        String imageURL;
+
+        Bitmap bitmap = null;
+        imageURL = "http://graph.facebook.com/"+userID+"/picture?type=large";
+        InputStream in = (InputStream) new URL(imageURL).getContent();
+        bitmap = BitmapFactory.decodeStream(in);
+
+        return bitmap;
+    }
+
+
+
 }
