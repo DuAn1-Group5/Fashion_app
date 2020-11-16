@@ -8,12 +8,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,7 +20,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.login.widget.ProfilePictureView;
+import com.example.fashion_app.fragment.SanPhamFragment;
+import com.example.fashion_app.fragment.SanPhamNamFragment;
+import com.example.fashion_app.fragment.SanPhamNuFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
@@ -49,12 +49,14 @@ public class MainActivity extends AppCompatActivity {
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
+
         View headerView = navigationView.getHeaderView(0);
         iv_header_nav = headerView.findViewById(R.id.iv_header_nav);
         tv_NameHead = headerView.findViewById(R.id.tv_NameHead);
         tv_EmailHead = headerView.findViewById(R.id.tv_EmailHead);
 
         setSupportActionBar(myToolbar);
+        getSupportFragmentManager().beginTransaction().add(R.id.framelayout, new SanPhamFragment()).commit();
 
         //myToolbar.setLogo(R.mipmap.app_book);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
@@ -161,18 +163,22 @@ public class MainActivity extends AppCompatActivity {
         //iv_header_nav.setImageBitmap(profilePic);
     }
 
-    public static Bitmap getFacebookProfilePicture(String userID) throws SocketException, SocketTimeoutException, MalformedURLException, IOException, Exception
-    {
-        String imageURL;
+//    public static Bitmap getFacebookProfilePicture(String userID) throws SocketException, SocketTimeoutException, MalformedURLException, IOException, Exception
+//    {
+//        String imageURL;
+//
+//        Bitmap bitmap = null;
+//        imageURL = "http://graph.facebook.com/"+userID+"/picture?type=large";
+//        InputStream in = (InputStream) new URL(imageURL).getContent();
+//        bitmap = BitmapFactory.decodeStream(in);
+//
+//        return bitmap;
+//    }
 
-        Bitmap bitmap = null;
-        imageURL = "http://graph.facebook.com/"+userID+"/picture?type=large";
-        InputStream in = (InputStream) new URL(imageURL).getContent();
-        bitmap = BitmapFactory.decodeStream(in);
 
-        return bitmap;
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
     }
-
-
-
 }
