@@ -141,7 +141,16 @@ public class LoginActivity extends AppCompatActivity {
                 // App code
             }
         });
+
+        btnDangNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
+
 
     public void printHashKey(Context pContext) {
         try {

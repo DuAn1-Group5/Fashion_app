@@ -9,35 +9,26 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.fashion_app.fragment.SanPhamFragment;
-import com.example.fashion_app.fragment.SanPhamNamFragment;
-import com.example.fashion_app.fragment.SanPhamNuFragment;
+import com.example.fashion_app.fragment.HomeFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
-import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer;
     TextView toolbar_title;
     ImageView iv_header_nav;
     TextView tv_NameHead, tv_EmailHead;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,18 +41,21 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
 
 
+
         View headerView = navigationView.getHeaderView(0);
         iv_header_nav = headerView.findViewById(R.id.iv_header_nav);
         tv_NameHead = headerView.findViewById(R.id.tv_NameHead);
         tv_EmailHead = headerView.findViewById(R.id.tv_EmailHead);
 
         setSupportActionBar(myToolbar);
-        getSupportFragmentManager().beginTransaction().add(R.id.framelayout, new SanPhamFragment()).commit();
+
 
         //myToolbar.setLogo(R.mipmap.app_book);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setTitle("");
         toolbar_title.setText("Home");
+
+        getSupportFragmentManager().beginTransaction().add(R.id.framelayout, new HomeFragment()).commit();
 
 
 
@@ -76,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (menuItem.getItemId()){
                     case R.id.nav_home:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new Fragment1()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new HomeFragment()).commit();
                         Toast.makeText(MainActivity.this, "Trang chủ", Toast.LENGTH_SHORT).show();
                         toolbar_title.setText("Home");
                         break;
@@ -113,9 +107,13 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+        try{
+            layThongtinNguoiDung();
+        }catch (Exception e){
 
-        layThongtinNguoiDung();
+        }
 
+        onBackPressed();
 
     }
 
@@ -178,7 +176,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new HomeFragment()).commit();
     }
 }
