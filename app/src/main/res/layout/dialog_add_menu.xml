@@ -14,7 +14,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginBottom="20dp"
-            android:textColor="#8E24AA"
+            android:textColor="@color/black"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp" />
@@ -23,11 +23,11 @@
             android:layout_width="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textColor="#8E24AA"
+            android:textColor="@color/black"
             android:layout_marginTop="10dp"
             android:hint="Mã sản phẩm"
             android:inputType="numberDecimal"
-            android:textColorHint="#8E24AA"
+            android:textColorHint="@color/black"
             android:layout_height="50dp"/>
 
         <EditText
@@ -35,9 +35,9 @@
             android:layout_width="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textColor="#8E24AA"
+            android:textColor="@color/black"
             android:hint="Tên sản phẩm"
-            android:textColorHint="#8E24AA"
+            android:textColorHint="@color/black"
             android:layout_height="50dp"/>
 
         <EditText
@@ -45,54 +45,54 @@
             android:layout_width="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textColor="#8E24AA"
+            android:textColor="@color/black"
             android:layout_marginTop="10dp"
             android:hint="Mô tả"
-            android:textColorHint="#8E24AA"
+            android:textColorHint="@color/black"
             android:layout_height="50dp"/>
         <EditText
             android:id="@+id/edtGiaTien"
             android:layout_width="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textColor="#8E24AA"
+            android:textColor="@color/black"
             android:layout_marginTop="10dp"
             android:hint="Giá tiền"
             android:inputType="numberDecimal"
-            android:textColorHint="#8E24AA"
+            android:textColorHint="@color/black"
             android:layout_height="50dp"/>
         <EditText
             android:id="@+id/edtSize"
             android:layout_width="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textColor="#8E24AA"
+            android:textColor="@color/black"
             android:layout_marginTop="10dp"
             android:hint="Size"
             android:inputType="numberDecimal"
-            android:textColorHint="#8E24AA"
+            android:textColorHint="@color/black"
             android:layout_height="50dp"/>
         <EditText
             android:id="@+id/edtSoLuong"
             android:layout_width="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textColor="#8E24AA"
+            android:textColor="@color/black"
             android:layout_marginTop="10dp"
             android:hint="Số Lượng"
             android:inputType="numberDecimal"
-            android:textColorHint="#8E24AA"
+            android:textColorHint="@color/black"
             android:layout_height="50dp"/>
         <EditText
             android:id="@+id/edtMaLoai"
             android:layout_width="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textColor="#8E24AA"
+            android:textColor="@color/black"
             android:layout_marginTop="10dp"
             android:hint="Mã sản phẩm"
             android:inputType="numberDecimal"
-            android:textColorHint="#8E24AA"
+            android:textColorHint="@color/black"
             android:layout_height="50dp"/>
 
         <ImageView
@@ -113,8 +113,8 @@
                 android:layout_width="100dp"
                 android:layout_height="48dp"
                 android:text="Hủy"
-                android:background="#8E24AA"
-                android:textColor="#FFFF"
+                android:background="@drawable/buton_dangnhap"
+                android:textColor="@color/white"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"/>
 
@@ -124,9 +124,9 @@
                 android:layout_height="48dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:background="#8E24AA"
+                android:background="@drawable/buton_dangnhap"
                 android:text="Thêm"
-                android:textColor="#FFFF" />
+                android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
