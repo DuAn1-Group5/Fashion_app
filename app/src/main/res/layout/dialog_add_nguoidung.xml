@@ -1,6 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NGƯỜI DÙNG"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
+            android:textColor="#8E24AA"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp" />
+        <EditText
+            android:id="@+id/edtMaNguoiDung"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="#8E24AA"
+            android:layout_marginTop="10dp"
+            android:hint="Mã người dùng"
+            android:inputType="text"
+            android:textColorHint="#8E24AA"
+            android:layout_height="50dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/edtTenNguoiDung"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="#8E24AA"
+            android:layout_marginTop="10dp"
+            android:hint="Tên người dùng"
+            android:inputType="text"
+            android:textColorHint="#8E24AA"
+            android:layout_height="50dp"/>
+
+        <EditText
+            android:id="@+id/edtMatKhau"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="#8E24AA"
+            android:layout_marginTop="10dp"
+            android:hint="Mật khẩu"
+            android:inputType="text"
+            android:textColorHint="#8E24AA"
+            android:layout_height="50dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center">
+            <Button
+                android:id="@+id/btnHuy"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:text="Hủy"
+                android:background="#8E24AA"
+                android:textColor="#FFFF"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+
+            <Button
+                android:id="@+id/btnLuu"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#8E24AA"
+                android:text="Thêm"
+                android:textColor="#FFFF" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
