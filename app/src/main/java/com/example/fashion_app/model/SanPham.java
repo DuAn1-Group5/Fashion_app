@@ -20,6 +20,9 @@ public class SanPham {
         this.maLoai = maLoai;
     }
 
+    public SanPham() {
+    }
+
     public String getMaSanPham() {
         return maSanPham;
     }

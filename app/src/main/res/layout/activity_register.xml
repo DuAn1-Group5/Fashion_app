@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <RelativeLayout
+        android:id="@+id/rety"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/head">
+        <TextView
+            android:id="@+id/Dangki"
+            android:layout_width="166dp"
+            android:layout_height="37dp"
+            android:text="ĐĂNG KÍ"
+            android:textSize="28dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="60dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rety2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rety"
+        android:layout_marginTop="-2dp">
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="302dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="25dp"
+            android:hint="Email" />
+        <EditText
+            android:id="@+id/edtPassword1"
+            android:layout_width="302dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/edtEmail"
+            android:layout_marginLeft="25dp"
+            android:hint="Password" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rety2"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="25dp">
+        <Button
+            android:id="@+id/btnDangKi1"
+            android:layout_width="275dp"
+            android:layout_height="50dp"
+            android:background="@drawable/buton_dangnhap"
+            android:text="ĐĂNG KÍ"
+            android:textColor="#F8F3F3"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</RelativeLayout>

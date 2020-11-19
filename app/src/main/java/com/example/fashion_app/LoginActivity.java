@@ -44,6 +44,7 @@ import java.util.Arrays;
 public class LoginActivity extends AppCompatActivity {
     CallbackManager callbackManager = CallbackManager.Factory.create();
     EditText edtUsername;
+    TextView txtRegister;
     Button btnDangNhap, btnDangNhapFb;
     LoginButton loginButton;
     String email;
@@ -60,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         btnDangNhapFb = findViewById(R.id.btnDangNhapFb);
         loginButton =findViewById(R.id.login_button);
         edtUsername = findViewById(R.id.edtUsername);
+        txtRegister = findViewById(R.id.txtRegister);
 
         //Our custom Facebook button
         btnDangNhapFb = (Button) findViewById(R.id.btnDangNhapFb);
@@ -72,7 +74,13 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setReadPermissions("email");
         loginButton.setReadPermissions("user_birthday");
 
-
+        txtRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getBaseContext(), RegisterActivity.class);
+                startActivity(i);
+            }
+        });
 
 
         // Callback registration
