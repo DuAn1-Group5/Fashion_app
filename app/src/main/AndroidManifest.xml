@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fashion_app">
+        <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".ScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,10 +42,8 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity">
-
-        </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
