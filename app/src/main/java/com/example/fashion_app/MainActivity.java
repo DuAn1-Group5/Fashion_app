@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fashion_app.fragment.HomeFragment;
+import com.example.fashion_app.fragment.LoaiSanPhamFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
@@ -94,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_caidat:
                         //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new Fragment3()).commit();
                         //Toast.makeText(MainActivity.this, "Thống Kê", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.nav_loaisanpham:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new LoaiSanPhamFragment()).commit();
+                        Toast.makeText(MainActivity.this, "Loại sản phẩm", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_thoat:
                         finish();
