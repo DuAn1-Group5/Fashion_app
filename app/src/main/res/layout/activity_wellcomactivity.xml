@@ -31,6 +31,7 @@
         android:layout_alignParentBottom="true"
         android:layout_weight="1"
         android:text="Prev"
+        android:background="@drawable/button_layout"
         android:visibility="invisible"/>
 
     <Button
@@ -40,7 +41,8 @@
         android:layout_weight="1"
         android:text="Next"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_layout"/>
 
     <Button
         android:id="@+id/btnSkip"
@@ -50,7 +52,8 @@
         android:text="Skip"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:background="@drawable/button_layout"/>
 
 
 </RelativeLayout>

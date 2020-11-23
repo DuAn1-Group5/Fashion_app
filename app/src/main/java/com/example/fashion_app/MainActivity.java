@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fashion_app.fragment.GioHangFragment;
 import com.example.fashion_app.fragment.HomeFragment;
 import com.example.fashion_app.fragment.LoaiSanPhamFragment;
 import com.google.android.material.navigation.NavigationView;
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                         toolbar_title.setText("Home");
                         break;
                     case R.id.nav_cart:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new Fragment1()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new GioHangFragment()).commit();
                         Toast.makeText(MainActivity.this, "Giỏ Hàng", Toast.LENGTH_SHORT).show();
                         toolbar_title.setText("Giỏ hàng");
                         break;
@@ -89,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
                         //Toast.makeText(MainActivity.this, "Thống Kê", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_gioithieu:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new Fragment3()).commit();
-                        //Toast.makeText(MainActivity.this, "Thống Kê", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(),GioiThieuActivity.class));
+                        Toast.makeText(MainActivity.this, "Giới Thiệu", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_caidat:
                         //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new Fragment3()).commit();
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_loaisanpham:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new LoaiSanPhamFragment()).commit();
                         Toast.makeText(MainActivity.this, "Loại sản phẩm", Toast.LENGTH_SHORT).show();
+                        toolbar_title.setText("Loại Sản Phẩm");
                         break;
                     case R.id.nav_thoat:
                         finish();
@@ -146,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
         if(menuItem.getItemId()==R.id.cart) {
             //code vô
+            getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new GioHangFragment()).commit();
             Toast.makeText(this, "Giỏ Hàng", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(menuItem);

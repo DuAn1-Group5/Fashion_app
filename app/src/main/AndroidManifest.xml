@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fashion_app">
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".GioiThieuActivity"></activity>
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".ScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,8 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Wellcomactivity"></activity>
+        <activity android:name=".Wellcomactivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -42,7 +42,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
     </application>
 
