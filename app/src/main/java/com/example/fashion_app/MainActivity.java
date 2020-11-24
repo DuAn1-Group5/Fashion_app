@@ -22,6 +22,7 @@ import com.example.fashion_app.fragment.GioHangFragment;
 import com.example.fashion_app.fragment.HomeFragment;
 import com.example.fashion_app.fragment.LoaiSanPhamFragment;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     TextView toolbar_title;
     ImageView iv_header_nav;
     TextView tv_NameHead, tv_EmailHead;
+    FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
 
 
     @Override
@@ -103,8 +106,10 @@ public class MainActivity extends AppCompatActivity {
                         toolbar_title.setText("Loại Sản Phẩm");
                         break;
                     case R.id.nav_thoat:
-                        finish();
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
                         Toast.makeText(MainActivity.this, "Da Thoat", Toast.LENGTH_SHORT).show();
+                        finish();
                         break;
 
 
