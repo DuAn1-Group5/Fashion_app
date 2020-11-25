@@ -114,11 +114,7 @@
                 android:layout_height="48dp"
                 android:text="Hủy"
                 android:background="@drawable/buton_dangnhap"
-<<<<<<< HEAD
                 android:textColor="@color/white"
-=======
-                android:textColor="#FFFF"
->>>>>>> 718b95a38ccc2b181e3ff9280cb96f75599c09c3
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"/>
 
