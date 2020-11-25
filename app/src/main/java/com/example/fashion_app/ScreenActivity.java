@@ -23,7 +23,7 @@ public class ScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(),Wellcomactivity.class));
                 finish();
             }
         },2200);

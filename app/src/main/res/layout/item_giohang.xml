@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:src="@drawable/icon_delete" />
+
             <TextView
                 android:id="@+id/tvSnoopy"
                 android:layout_width="wrap_content"

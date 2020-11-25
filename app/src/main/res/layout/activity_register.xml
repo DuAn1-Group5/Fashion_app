@@ -58,11 +58,5 @@
             android:text="ĐĂNG KÍ"
             android:textColor="#F8F3F3"/>
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
     </LinearLayout>
 </RelativeLayout>

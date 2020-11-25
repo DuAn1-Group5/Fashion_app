@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.SanPhamNuFragment"
     android:background="#ffff">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+\\san pham nu id giong nhau nha
+    <EditText
+        android:layout_width="340dp"
+        android:layout_height="30dp"
+        android:id="@+id/edtSearch"
+        android:background="@drawable/box_border"
+        android:shadowColor="@color/black"
+        android:layout_margin="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="7dp"
+        android:layout_toRightOf="@+id/edtSearch"
+        android:background="@drawable/ic_search"
+        android:layout_marginTop="10dp"/>
+
+    <Spinner
+        android:id="@+id/spnProduct"
+        android:layout_width="340dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/edtSearch"
+        android:background="@drawable/box_border"
+        android:layout_margin="10dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="390dp"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/spnProduct">
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+</RelativeLayout>

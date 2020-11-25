@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import com.example.fashion_app.R;
 
 public class HomeFragment extends Fragment {
-    ImageView iv_Men, iv_Women, iv_SaleOff;
+    Button iv_Men, iv_Women, iv_SaleOff;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -27,6 +27,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getFragmentManager().beginTransaction().replace(R.id.framelayout, new SanPhamNamFragment()).commit();
+            }
+        });
+        iv_Women.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.framelayout, new SanPhamNuFragment()).commit();
             }
         });
         return view;

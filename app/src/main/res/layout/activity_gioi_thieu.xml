@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GioiThieuActivity"
+    android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <Button
+                android:id="@+id/btnbackGT"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:drawableLeft="@drawable/ic_back"
+                android:text="Giới Thiệu"
+                android:textSize="20sp"
+                android:background="@drawable/button_layout"
+                />
+            <ImageView
+                android:id="@+id/ivGT"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/logofashionapp"
+                android:layout_below="@+id/btnbackGT"
+                android:layout_centerHorizontal="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvVers"
+                android:text="V1.1.0"
+                android:layout_below="@+id/ivGT"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+        </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_marginTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Thông Tin Cơ Bản"
+            android:textStyle="bold|italic"
+            android:textSize="24sp"
+            android:layout_marginLeft="8dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="8dp">
+
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="Tên dự án:
+                            \nThời gian:
+                            \nServer databse:
+                            \nCông cụ hỗ trợ:
+                            \nPhiên bản:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="14sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ứng dụng mua quần Áo Online Fashion App
+                            \nBắt đầu vào ngày 1/11/2020
+                            \nFireBase
+                            \nAdope XD, Android Studio, GIT
+                            \nV1.1.0"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:textAlignment="textStart"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Thông Tin Tác Giả"
+            android:textStyle="bold|italic"
+            android:textSize="24sp"
+            android:layout_marginLeft="8dp"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Do Nhóm 5 phối hợp thực hiện
+                    \nNgày hoàn thành:
+                    \nNgành: Lập trình Mobile"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            android:layout_marginLeft="8dp"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

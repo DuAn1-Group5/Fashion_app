@@ -18,22 +18,22 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText edtUsername1, edtPassword1, edtEmail;
+    EditText edtUsername1, edtPass, edtEmail;
     Button btnDangKi1, btnDangNhap1;
-    FirebaseAuth fAuth;
+    FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
         edtEmail = findViewById(R.id.edtEmail);
-        edtPassword1 = findViewById(R.id.edtPassword1);
+        edtPass = findViewById(R.id.edtPassword1);
         btnDangKi1 = findViewById(R.id.btnDangKi1);
         //progressBar = findViewById(R.id.progressBar);
 
-        fAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        if(fAuth.getCurrentUser() != null){
+        if(firebaseAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
@@ -41,34 +41,36 @@ public class RegisterActivity extends AppCompatActivity {
         btnDangKi1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String memail = edtEmail.getText().toString().trim();
-                String password = edtPassword1.getText().toString().trim();
-                if (TextUtils.isEmpty(memail)){
-                    edtEmail.setError("vui long nhap email");
-                    return;
+                String Name1 = edtEmail.getText().toString();
+                String pwd1 = edtPass.getText().toString();
+                if (Name1.isEmpty()){
+                    edtEmail.setError("Không để trống EMAIL");
+                    edtEmail.requestFocus();
                 }
-                if (TextUtils.isEmpty(password)){
-                    edtPassword1.setError("vui long nhap password");
-                    return;
+                else if (pwd1.isEmpty()){
+                    edtPass.setError("Không để trống PASSWORD");
+                    edtPass.requestFocus();
                 }
-                if (password.length()<5){
-                    edtPassword1.setError("password tren 5 ki tu ");
-                    return;
+                else if (Name1.isEmpty() && pwd1.isEmpty()){
+                    Toast.makeText(RegisterActivity.this, "Không để trống", Toast.LENGTH_SHORT).show();
                 }
-
-//firebase
-                fAuth.createUserWithEmailAndPassword(memail, password).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this, "Succesed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-
-                        } else {
-                            Toast.makeText(RegisterActivity.this, "Loi" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                else if (!(Name1.isEmpty() && pwd1.isEmpty())){
+                    firebaseAuth.createUserWithEmailAndPassword(Name1,pwd1).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (!task.isSuccessful()){
+                                Toast.makeText(RegisterActivity.this, "Đăng ký không thành công, thử lại", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                            }
                         }
-                    }
-                });
+                    });
+                }
+                else {
+                    Toast.makeText(RegisterActivity.this, "Lỗi!", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 
