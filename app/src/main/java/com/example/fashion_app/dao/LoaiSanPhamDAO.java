@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.fashion_app.adapter.LoaiSanPhamAdapter;
 import com.example.fashion_app.model.LoaiSanPham;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,21 +25,45 @@ public class LoaiSanPhamDAO {
     Context context;
     DatabaseReference databaseReference;
     LoaiSanPhamInterface loaiSanPhamInterface;
+    long id;
 
     public LoaiSanPhamDAO(Context context, LoaiSanPhamInterface loaiSanPhamInterface) {
         this.context = context;
         this.loaiSanPhamInterface = loaiSanPhamInterface;
     }
 
+    public LoaiSanPhamDAO(Context context) {
+        this.context = context;
+    }
 
-    public void insert(String id, String tenLoaiSanPham) {
+    public void insert(String tenLoaiSanPham) {
         databaseReference = FirebaseDatabase.getInstance().getReference("LoaiSanPham");
-        LoaiSanPham loaiSanPham = new LoaiSanPham(id, tenLoaiSanPham);
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if(snapshot.exists()){
+//                    id = snapshot.getChildrenCount();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+        LoaiSanPham loaiSanPham = new LoaiSanPham(tenLoaiSanPham);
+
         databaseReference.push().setValue(loaiSanPham);
     }
 
-    public void delete(String key) {
-        databaseReference = FirebaseDatabase.getInstance().getReference("LoaiSanPham").child(key);
+    public void update(String id, String tenLoaiSanPham){
+        databaseReference = FirebaseDatabase.getInstance().getReference("LoaiSanPham").child(id);
+        LoaiSanPham loaiSanPham = new LoaiSanPham(tenLoaiSanPham);
+        databaseReference.setValue(loaiSanPham);
+    }
+
+    public void delete(String maLoai) {
+        databaseReference = FirebaseDatabase.getInstance().getReference("LoaiSanPham").child(maLoai);
         databaseReference.removeValue();
     }
 
@@ -49,7 +75,7 @@ public class LoaiSanPhamDAO {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     LoaiSanPham loaisanpham = snapshot.getValue(LoaiSanPham.class);
-                    //sanPham.setMaLoai(snapshot.getKey());
+                    loaisanpham.setMaLoai(snapshot.getKey());
                     list.add(loaisanpham);
                     loaiSanPhamInterface.notifyData();
                 }
@@ -63,6 +89,8 @@ public class LoaiSanPhamDAO {
         });
         return list;
     }
+
+
 
 
     public interface LoaiSanPhamInterface {

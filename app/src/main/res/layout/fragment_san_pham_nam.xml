@@ -7,10 +7,8 @@
     tools:context=".fragment.SanPhamNamFragment"
     android:background="#ffff">
 
-<<<<<<< HEAD
     <!-- TODO: Update blank fragment layout -->
-=======
->>>>>>> temp
+
     <EditText
         android:layout_width="340dp"
         android:layout_height="30dp"
@@ -42,13 +40,9 @@
         android:layout_width="390dp"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        android:layout_below="@+id/spnProduct">
+        android:layout_below="@+id/spnProduct"
+        tools:listitem="@layout/item_sanpham">
+
     </androidx.recyclerview.widget.RecyclerView>
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> temp
 
 </RelativeLayout>

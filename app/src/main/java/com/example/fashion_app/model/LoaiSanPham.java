@@ -1,14 +1,14 @@
 package com.example.fashion_app.model;
 
 public class LoaiSanPham {
-    private String maLoai;
     private String tenLoai;
+    private String maLoai;
 
 
-    public LoaiSanPham(String maLoai, String tenLoai) {
-        this.maLoai = maLoai;
+    public LoaiSanPham(String tenLoai) {
         this.tenLoai = tenLoai;
     }
+
 
     public LoaiSanPham() {
     }

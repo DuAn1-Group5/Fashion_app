@@ -18,6 +18,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp" />
+
         <EditText
             android:id="@+id/edtTenLoai"
             android:layout_width="match_parent"
@@ -30,17 +31,7 @@
             android:textColorHint="@color/black"
             android:layout_height="50dp"/>
 
-        <EditText
-            android:id="@+id/edtMaLoai"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:hint="Mã Loại"
-            android:inputType="text"
-            android:textColorHint="@color/black"
-            android:layout_height="50dp"/>
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -49,7 +40,7 @@
             android:layout_marginTop="20dp"
             android:layout_gravity="center">
             <Button
-                android:id="@+id/btnHuy"
+                android:id="@+id/btnHuyLoaiSanPham"
                 android:layout_width="100dp"
                 android:layout_height="48dp"
                 android:text="Hủy"
@@ -59,7 +50,7 @@
                 android:layout_marginRight="20dp"/>
 
             <Button
-                android:id="@+id/btnLuu"
+                android:id="@+id/btnThemLoaiSanPham"
                 android:layout_width="100dp"
                 android:layout_height="48dp"
                 android:layout_marginLeft="20dp"
