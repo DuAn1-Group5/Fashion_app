@@ -29,18 +29,34 @@
         android:layout_below="@+id/rety"
         android:layout_marginTop="-2dp">
         <EditText
-            android:id="@+id/edtEmail"
+            android:id="@+id/edtregUsername"
             android:layout_width="302dp"
             android:layout_height="60dp"
             android:layout_marginLeft="25dp"
+            android:hint="Username" />
+        <EditText
+            android:id="@+id/edtregEmail"
+            android:layout_width="302dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="25dp"
+            android:layout_below="@id/edtregUsername"
             android:hint="Email" />
         <EditText
-            android:id="@+id/edtPassword1"
+            android:id="@+id/edtregPassword"
             android:layout_width="302dp"
             android:layout_height="60dp"
-            android:layout_below="@id/edtEmail"
+            android:layout_below="@id/edtregEmail"
             android:layout_marginLeft="25dp"
-            android:hint="Password" />
+            android:hint="Password"
+            android:inputType="textPassword"/>
+        <EditText
+            android:id="@+id/edtregPasswordAgain"
+            android:layout_width="302dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/edtregPassword"
+            android:layout_marginLeft="25dp"
+            android:hint="Password again"
+            android:inputType="textPassword"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -51,12 +67,11 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="25dp">
         <Button
-            android:id="@+id/btnDangKi1"
+            android:id="@+id/btnregDangKi"
             android:layout_width="275dp"
             android:layout_height="50dp"
             android:background="@drawable/buton_dangnhap"
             android:text="ĐĂNG KÍ"
             android:textColor="#F8F3F3"/>
-
     </LinearLayout>
 </RelativeLayout>

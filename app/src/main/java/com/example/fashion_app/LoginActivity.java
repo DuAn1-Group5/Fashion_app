@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.fashion_app.model.NguoiDung;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -39,6 +40,12 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONObject;
 
@@ -178,36 +185,46 @@ public class LoginActivity extends AppCompatActivity {
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String Name = edtUsername.getText().toString();
-                String pwd = edtPassword.getText().toString();
-                if (Name.isEmpty()){
-                    edtUsername.setError("Không để trống USERNAME");
-                    edtUsername.requestFocus();
-                }
-                else if (pwd.isEmpty()){
-                    edtPassword.setError("Không để trống PASSWORD");
-                    edtPassword.requestFocus();
-                }
-                else if (Name.isEmpty() && pwd.isEmpty()){
-                    Toast.makeText(LoginActivity.this, "Không để trống", Toast.LENGTH_SHORT).show();
-                }
-                else if (!(Name.isEmpty() && pwd.isEmpty())){
-                    firebaseAuth.signInWithEmailAndPassword(Name, pwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (!task.isSuccessful()){
-                                Toast.makeText(LoginActivity.this, "Đăng nhập thất bại, Thử lại", Toast.LENGTH_SHORT).show();
-                            }
-                            else{
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            }
-                        }
-                    });
-                }
-                else {
-                    Toast.makeText(LoginActivity.this, "Lỗi!", Toast.LENGTH_SHORT).show();
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+                Query query = databaseReference.child("users").orderByChild("tenNguoidung").equalTo(edtUsername.getText().toString().trim());
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            for (DataSnapshot user : dataSnapshot.getChildren()) {
+                                NguoiDung users = user.getValue(NguoiDung.class);
 
-                }
+                                if (users.getMatKhau().equals(edtPassword.getText().toString().trim())) {
+//                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                                    startActivity(intent);
+
+                                    Intent i = new Intent(getBaseContext(), MainActivity.class);
+                                    Bundle bundle = new Bundle();
+                                    String email = users.getEmail();
+                                    String name = users.getTenNguoidung();
+                                    String image = "";
+                                    bundle.putString("email", email);
+                                    bundle.putString("name", name);
+                                    bundle.putString("avatar", image);
+
+                                    i.putExtra("infomation", bundle);
+                                    startActivity(i);
+                                    Toast.makeText(getBaseContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "Password is wrong", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        } else {
+                            Toast.makeText(LoginActivity.this, "User not found", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
     }
