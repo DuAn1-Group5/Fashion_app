@@ -41,8 +41,19 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:layout_below="@+id/spnProduct"
-        tools:listitem="@layout/item_sanpham">
+        tools:listitem="@layout/item_sanpham"
+        android:id="@+id/rcv_sanpham">
 
     </androidx.recyclerview.widget.RecyclerView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_addSanPham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/add"
+        android:backgroundTint="#ffff"/>
 
 </RelativeLayout>

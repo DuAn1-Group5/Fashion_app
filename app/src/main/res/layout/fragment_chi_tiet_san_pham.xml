@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.ChiTietSanPhamFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/clothes_nam"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="@android:dimen/app_icon_size"
+                        android:text="60 $"
+                        android:textColor="@color/black"
+                        android:textSize="30dp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@android:dimen/app_icon_size"
+                        android:layout_marginTop="10dp"
+                        android:text="Eye of Mafia"
+                        android:textColor="@color/black"
+                        android:textSize="30dp"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@android:dimen/app_icon_size">
+
+                        <RadioButton
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:text="S"/>
+
+                        <RadioButton
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:text="M"/>
+                        <RadioButton
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:text="L"/>
+                        <RadioButton
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:text="XL"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@android:dimen/app_icon_size"
+                    android:layout_marginTop="15dp"
+                    android:text="MÔ TẢ:"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="hàng mới về, rẻ đẹp zo mua zo mua"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="@android:dimen/app_icon_size"/>
+                    <Button
+                        android:layout_width="300dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/buton_dangnhap"
+                        android:text="Thêm vào giỏ hàng"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bạn có thể thích"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="@android:dimen/app_icon_size"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@android:dimen/app_icon_size"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_sanpham" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

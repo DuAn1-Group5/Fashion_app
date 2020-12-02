@@ -1,5 +1,7 @@
 package com.example.fashion_app.model;
 
+import androidx.annotation.NonNull;
+
 public class LoaiSanPham {
     private String tenLoai;
     private String maLoai;
@@ -27,5 +29,12 @@ public class LoaiSanPham {
 
     public void setTenLoai(String tenLoai) {
         this.tenLoai = tenLoai;
+    }
+
+
+    @NonNull
+    @Override
+    public String toString() {
+        return getTenLoai();
     }
 }

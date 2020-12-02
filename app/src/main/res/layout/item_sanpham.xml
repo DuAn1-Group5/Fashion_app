@@ -7,33 +7,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <androidx.cardview.widget.CardView
+        <ImageView
+            android:id="@+id/iv_product"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="10dp">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="280dp"
-                android:src="@drawable/image_giohang"
-                />
-        </androidx.cardview.widget.CardView>
-
+            android:layout_height="match_parent"
+            android:src="@drawable/image_giohang"
+            android:layout_weight="1"/>
         <TextView
+            android:id="@+id/tv_nameProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:text="Name product"
             android:textSize="20sp"
-            android:layout_marginLeft="10dp"/>
-
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
         <TextView
+            android:id="@+id/tv_priceProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="price product"
             android:textStyle="italic"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"/>
 
     </LinearLayout>
 
