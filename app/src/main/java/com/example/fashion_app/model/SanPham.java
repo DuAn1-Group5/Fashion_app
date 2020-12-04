@@ -5,18 +5,24 @@ public class SanPham {
     private  String tenSanPham;
     private  String giaTien;
     private  String moTa;
-    private  String size;
     private  String soLuong;
     private String hinhanh;
     private  String maLoai;
 
-    public SanPham(String tenSanPham, String giaTien, String moTa, String size, String soLuong, String hinhanh, String maLoai) {
+    public SanPham(String tenSanPham, String giaTien, String moTa, String soLuong, String hinhanh, String maLoai) {
         this.tenSanPham = tenSanPham;
         this.giaTien = giaTien;
         this.moTa = moTa;
-        this.size = size;
         this.soLuong = soLuong;
         this.hinhanh = hinhanh;
+        this.maLoai = maLoai;
+    }
+
+    public SanPham(String tenSanPham, String giaTien, String moTa, String soLuong, String maLoai) {
+        this.tenSanPham = tenSanPham;
+        this.giaTien = giaTien;
+        this.moTa = moTa;
+        this.soLuong = soLuong;
         this.maLoai = maLoai;
     }
 
@@ -55,13 +61,6 @@ public class SanPham {
         this.moTa = moTa;
     }
 
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
 
     public String getSoLuong() {
         return soLuong;

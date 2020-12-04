@@ -72,34 +72,6 @@ public class RegisterActivity extends AppCompatActivity {
                     registerUser(email,password);
                 }
 
-//                if(edtregUsername.getText().toString().isEmpty()){
-//                    edtregUsername.setError("Vui Long Nhap Username");
-//                    edtregUsername.requestFocus();
-//                    return;
-//                }
-//                if(edtregEmail.getText().toString().isEmpty()){
-//                    edtregEmail.setError("Vui Long Nhap Email");
-//                    edtregEmail.requestFocus();
-//                    return;
-//                }
-//                if(edtregPassword.getText().toString().isEmpty()){
-//                    edtregPassword.setError("Vui Long Nhap Password");
-//                    edtregPassword.requestFocus();
-//                    return;
-//                }
-//                if(edtregPassword.getText().toString().length()<6){
-//                    edtregPassword.setError("Vui Long Nhap Password Nhieu Hon 6 Ki Tu");
-//                    edtregPassword.requestFocus();
-//                    return;
-//                }
-//
-//                if (!password.equals(passwordAgain) || passwordAgain.length() == 0){
-//                    edtregPassword.setError("Không trùng mật khẩu");
-//                    edtregPassword.requestFocus();
-//                }else{
-//                    user = new NguoiDung(userName, email,"user", password);
-//                    registerUser(email,password);
-//                }
             }
         });
     }

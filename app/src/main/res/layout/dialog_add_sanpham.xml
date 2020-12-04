@@ -24,7 +24,7 @@
             android:layout_width="200dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            />
+            android:background="@drawable/border"/>
         <Spinner
             android:id="@+id/spn_maloai"
             android:layout_width="match_parent"
@@ -59,14 +59,6 @@
             android:textColor="@color/black"
             android:hint="Giá tiền"
             android:inputType="numberDecimal"
-            android:layout_height="50dp"/>
-        <EditText
-            android:id="@+id/edtSize"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textColor="@color/black"
-            android:hint="Size"
             android:layout_height="50dp"/>
 
 

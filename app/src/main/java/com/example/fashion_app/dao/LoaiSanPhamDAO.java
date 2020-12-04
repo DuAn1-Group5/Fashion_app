@@ -77,9 +77,8 @@ public class LoaiSanPhamDAO {
                     LoaiSanPham loaisanpham = snapshot.getValue(LoaiSanPham.class);
                     loaisanpham.setMaLoai(snapshot.getKey());
                     list.add(loaisanpham);
-                    loaiSanPhamInterface.notifyData();
                 }
-
+                loaiSanPhamInterface.notifyData();
             }
 
             @Override
@@ -89,8 +88,6 @@ public class LoaiSanPhamDAO {
         });
         return list;
     }
-
-
 
 
     public interface LoaiSanPhamInterface {

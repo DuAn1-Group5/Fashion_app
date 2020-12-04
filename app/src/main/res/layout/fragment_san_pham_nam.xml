@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".fragment.SanPhamNamFragment"
     android:background="#ffff">
@@ -39,7 +40,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="390dp"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
         android:layout_below="@+id/spnProduct"
         tools:listitem="@layout/item_sanpham"
         android:id="@+id/rcv_sanpham">

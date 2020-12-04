@@ -40,7 +40,8 @@
             android:layout_height="60dp"
             android:layout_below="@id/edtUsername"
             android:layout_marginLeft="25dp"
-            android:hint="Password"/>
+            android:hint="Password"
+            android:inputType="textPassword"/>
         <CheckBox
             android:id="@+id/cboLuumatkhau"
             android:layout_width="150dp"
