@@ -2,6 +2,7 @@ package com.example.fashion_app.adapter;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +17,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fashion_app.R;
 import com.example.fashion_app.dao.SanPhamDAO;
+import com.example.fashion_app.fragment.ChiTietSanPhamFragment;
 import com.example.fashion_app.fragment.UpdateMenu;
 import com.example.fashion_app.model.SanPham;
 import com.squareup.picasso.Picasso;
@@ -31,6 +34,8 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.Recycler
     Activity context;
     ArrayList<SanPham> listSP;
     SanPhamDAO dao;
+
+    public static String ten, gia, mota, hinhanh;
 
     public SanPhamAdapter(Activity context, ArrayList<SanPham> listSP) {
         this.context = context;
@@ -49,7 +54,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.Recycler
     @Override
     public void onBindViewHolder(@NonNull RecyclerHolder holder, final int position) {
             holder.tvTenSanPham.setText(listSP.get(position).getTenSanPham());
-            holder.tvGiaTien.setText(listSP.get(position).getGiaTien());
+            holder.tvGiaTien.setText(listSP.get(position).getGiaTien()+"$");
             try{
                 Picasso.get().load(listSP.get(position).getHinhanh()).into(holder.iv_product);
             }catch (Exception e){
@@ -101,6 +106,19 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.Recycler
                     });
                     dialog.show();
                     return false;
+                }
+            });
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ten = listSP.get(position).getTenSanPham();
+                    gia = listSP.get(position).getGiaTien();
+                    mota = listSP.get(position).getMoTa();
+                    hinhanh = listSP.get(position).getHinhanh();
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    Fragment myFragment = new ChiTietSanPhamFragment();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, myFragment).addToBackStack(null).commit();
                 }
             });
     }
