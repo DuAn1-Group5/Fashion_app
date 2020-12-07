@@ -14,6 +14,12 @@ public class ChiTietHoaDon {
         this.maSanpham = maSanpham;
     }
 
+    public ChiTietHoaDon(String soLuong, String maHoadon, String maSanpham) {
+        this.soLuong = soLuong;
+        this.maHoadon = maHoadon;
+        this.maSanpham = maSanpham;
+    }
+
     public String getMaChitiethoadon() {
         return maChitiethoadon;
     }

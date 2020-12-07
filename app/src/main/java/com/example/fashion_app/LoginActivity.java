@@ -65,6 +65,9 @@ public class LoginActivity extends AppCompatActivity {
     String image;
     String profilePicUrl;
     FirebaseAuth firebaseAuth;
+
+    public static String ma;
+    public static String matkhau;
     private FirebaseAuth.AuthStateListener authStateListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,9 +169,6 @@ public class LoginActivity extends AppCompatActivity {
                 request.setParameters(parameters);
                 request.executeAsync();
 
-
-
-
             }
 
             @Override
@@ -193,7 +193,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot user : dataSnapshot.getChildren()) {
                                 NguoiDung users = user.getValue(NguoiDung.class);
-
+                                users.setMaNguoidung(user.getKey());
                                 if (users.getMatKhau().equals(edtPassword.getText().toString().trim())) {
 //                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 //                                    startActivity(intent);
@@ -206,7 +206,8 @@ public class LoginActivity extends AppCompatActivity {
                                     bundle.putString("email", email);
                                     bundle.putString("name", name);
                                     bundle.putString("avatar", image);
-
+                                    ma = users.getMaNguoidung();
+                                    matkhau = users.getMatKhau();
                                     i.putExtra("infomation", bundle);
                                     startActivity(i);
                                     Toast.makeText(getBaseContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();

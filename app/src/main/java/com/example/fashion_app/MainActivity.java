@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.fashion_app.fragment.GioHangFragment;
 import com.example.fashion_app.fragment.HomeFragment;
 import com.example.fashion_app.fragment.LoaiSanPhamFragment;
+import com.example.fashion_app.fragment.TabFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         toolbar_title.setText("Home");
 
-        getSupportFragmentManager().beginTransaction().add(R.id.framelayout, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.framelayout, new TabFragment()).commit();
 
 
 
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (menuItem.getItemId()){
                     case R.id.nav_home:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new HomeFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new TabFragment()).commit();
                         Toast.makeText(MainActivity.this, "Trang chủ", Toast.LENGTH_SHORT).show();
                         toolbar_title.setText("Home");
                         break;
@@ -89,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
                         //Toast.makeText(MainActivity.this, "Quản Lý Chi", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_change:
+                        Intent i = new Intent(MainActivity.this, ChangePassActivity.class);
+                        startActivity(i);
                         //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new Fragment3()).commit();
                         //Toast.makeText(MainActivity.this, "Thống Kê", Toast.LENGTH_SHORT).show();
                         break;
@@ -108,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_thoat:
                         FirebaseAuth.getInstance().signOut();
                         startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        LoginActivity.matkhau = "";
                         Toast.makeText(MainActivity.this, "Da Thoat", Toast.LENGTH_SHORT).show();
                         finish();
                         break;
@@ -189,6 +193,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new TabFragment()).commit();
     }
 }
