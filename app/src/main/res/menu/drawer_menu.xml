@@ -12,6 +12,9 @@
         <item android:id="@+id/nav_loaisanpham"
             android:icon="@drawable/ic_loaisp"
             android:title="Loại sản phẩm"/>
+        <item android:id="@+id/nav_hoadon"
+            android:icon="@drawable/ic_loaisp"
+            android:title="Hóa đơn"/>
         <item android:id="@+id/nav_list"
             android:icon="@drawable/ic_list"
             android:title="Danh sách hóa đơn"/>

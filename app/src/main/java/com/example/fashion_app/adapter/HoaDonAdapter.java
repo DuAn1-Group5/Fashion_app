@@ -1,0 +1,94 @@
+package com.example.fashion_app.adapter;
+
+import android.app.Activity;
+import android.app.Dialog;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.fashion_app.R;
+import com.example.fashion_app.dao.LoaiSanPhamDAO;
+import com.example.fashion_app.fragment.ChiTietSanPhamFragment;
+import com.example.fashion_app.fragment.GioHangFragment;
+import com.example.fashion_app.model.HoaDon;
+import com.example.fashion_app.model.LoaiSanPham;
+
+import java.util.ArrayList;
+
+
+public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.RecyclerHolder> {
+    Activity context;
+    ArrayList<HoaDon> listHD;
+    LoaiSanPhamDAO dao;
+    public static String maHoaDon = "";
+    public static String trangThai = "";
+
+    public HoaDonAdapter(Activity context, ArrayList<HoaDon> listHD) {
+        this.context = context;
+        this.listHD = listHD;
+    }
+
+
+    @NonNull
+    @Override
+    public HoaDonAdapter.RecyclerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view;
+        LayoutInflater inflater = context.getLayoutInflater();
+            view = inflater.inflate(R.layout.item_hoadon, parent, false);
+        return (new RecyclerHolder(view));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull HoaDonAdapter.RecyclerHolder holder, final int position) {
+        dao = new LoaiSanPhamDAO(context);
+        holder.tvMaHD.setText(listHD.get(position).getMaHoadon());
+        holder.tvNgay.setText(listHD.get(position).getNgay());
+        holder.tvTrangThai.setText(listHD.get(position).getTrangThai());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                maHoaDon = listHD.get(position).getMaHoadon();
+                Log.d("TAG", "onClick: "+maHoaDon);
+
+                trangThai = listHD.get(position).getTrangThai();
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                Fragment myFragment = new GioHangFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, myFragment).addToBackStack(null).commit();
+            }
+        });
+
+    }
+
+    @Override
+    public int getItemCount() {
+            return listHD.size();
+    }
+
+    public class RecyclerHolder extends RecyclerView.ViewHolder {
+        CardView menu_item;
+        TextView tvMaHD;
+        TextView tvNgay;
+        TextView tvTrangThai;
+
+        ImageView iv_Menu;
+        public RecyclerHolder(@NonNull View itemView) {
+            super(itemView);
+            tvMaHD = itemView.findViewById(R.id.tvMaHD);
+            tvNgay = itemView.findViewById(R.id.tvNgay);
+            tvTrangThai = itemView.findViewById(R.id.tvTrangThai);
+        }
+    }
+}

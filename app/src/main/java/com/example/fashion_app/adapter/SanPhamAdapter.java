@@ -35,7 +35,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.Recycler
     ArrayList<SanPham> listSP;
     SanPhamDAO dao;
 
-    public static String ten, gia, mota, hinhanh;
+    public static String ma, ten, gia, mota, hinhanh;
 
     public SanPhamAdapter(Activity context, ArrayList<SanPham> listSP) {
         this.context = context;
@@ -112,6 +112,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.Recycler
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    ma = listSP.get(position).getMaSanPham();
                     ten = listSP.get(position).getTenSanPham();
                     gia = listSP.get(position).getGiaTien();
                     mota = listSP.get(position).getMoTa();

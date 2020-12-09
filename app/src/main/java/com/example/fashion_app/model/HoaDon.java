@@ -2,18 +2,18 @@ package com.example.fashion_app.model;
 
 public class HoaDon {
     private String maHoadon;
-    private String Ngay;
-    private String maSanpham;
+    private String ngay;
     private String trangThai;
     private String maKhachhang;
+    private String tongTien;
+    public HoaDon() {
+    }
 
-
-    public HoaDon(String maHoadon, String ngay, String maSanpham, String trangThai, String maKhachhang) {
-        this.maHoadon = maHoadon;
-        Ngay = ngay;
-        this.maSanpham = maSanpham;
+    public HoaDon(String ngay, String trangThai, String maKhachhang, String tongTien) {
+        this.ngay = ngay;
         this.trangThai = trangThai;
         this.maKhachhang = maKhachhang;
+        this.tongTien = tongTien;
     }
 
     public String getMaHoadon() {
@@ -25,19 +25,11 @@ public class HoaDon {
     }
 
     public String getNgay() {
-        return Ngay;
+        return ngay;
     }
 
     public void setNgay(String ngay) {
-        Ngay = ngay;
-    }
-
-    public String getMaSanpham() {
-        return maSanpham;
-    }
-
-    public void setMaSanpham(String maSanpham) {
-        this.maSanpham = maSanpham;
+        this.ngay = ngay;
     }
 
     public String getTrangThai() {
@@ -54,5 +46,13 @@ public class HoaDon {
 
     public void setMaKhachhang(String maKhachhang) {
         this.maKhachhang = maKhachhang;
+    }
+
+    public String getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(String tongTien) {
+        this.tongTien = tongTien;
     }
 }

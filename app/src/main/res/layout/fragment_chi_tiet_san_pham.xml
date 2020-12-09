@@ -55,20 +55,24 @@
                         android:orientation="horizontal"
                         android:layout_marginLeft="@android:dimen/app_icon_size">
 
-                        <RadioButton
+                        <CheckBox
+                            android:id="@+id/chkS"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:text="S"/>
 
-                        <RadioButton
+                        <CheckBox
+                            android:id="@+id/chkM"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:text="M"/>
-                        <RadioButton
+                        <CheckBox
+                            android:id="@+id/chkL"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:text="L"/>
-                        <RadioButton
+                        <CheckBox
+                            android:id="@+id/chkXL"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:text="XL"/>

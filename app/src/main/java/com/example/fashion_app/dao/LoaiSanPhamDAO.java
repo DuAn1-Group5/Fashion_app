@@ -38,19 +38,6 @@ public class LoaiSanPhamDAO {
 
     public void insert(String tenLoaiSanPham) {
         databaseReference = FirebaseDatabase.getInstance().getReference("LoaiSanPham");
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if(snapshot.exists()){
-//                    id = snapshot.getChildrenCount();
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
         LoaiSanPham loaiSanPham = new LoaiSanPham(tenLoaiSanPham);
 
         databaseReference.push().setValue(loaiSanPham);

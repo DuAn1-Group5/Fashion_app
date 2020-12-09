@@ -18,7 +18,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fashion_app.adapter.HoaDonAdapter;
 import com.example.fashion_app.fragment.GioHangFragment;
+import com.example.fashion_app.fragment.HoaDonFragment;
 import com.example.fashion_app.fragment.HomeFragment;
 import com.example.fashion_app.fragment.LoaiSanPhamFragment;
 import com.example.fashion_app.fragment.TabFragment;
@@ -103,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
                         //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new Fragment3()).commit();
                         //Toast.makeText(MainActivity.this, "Thống Kê", Toast.LENGTH_SHORT).show();
                         break;
+                    case R.id.nav_hoadon:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new HoaDonFragment()).commit();
+                        Toast.makeText(MainActivity.this, "Hóa đơn", Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.nav_loaisanpham:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new LoaiSanPhamFragment()).commit();
                         Toast.makeText(MainActivity.this, "Loại sản phẩm", Toast.LENGTH_SHORT).show();
@@ -157,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
         if(menuItem.getItemId()==R.id.cart) {
             //code vô
+            HoaDonAdapter.maHoaDon = "";
             getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new GioHangFragment()).commit();
             Toast.makeText(this, "Giỏ Hàng", Toast.LENGTH_SHORT).show();
         }
