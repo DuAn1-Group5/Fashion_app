@@ -23,6 +23,7 @@ import com.example.fashion_app.fragment.GioHangFragment;
 import com.example.fashion_app.fragment.HoaDonFragment;
 import com.example.fashion_app.fragment.HomeFragment;
 import com.example.fashion_app.fragment.LoaiSanPhamFragment;
+import com.example.fashion_app.fragment.SanPhamNamFragment;
 import com.example.fashion_app.fragment.TabFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         toolbar_title.setText("Home");
 
-        getSupportFragmentManager().beginTransaction().add(R.id.framelayout, new TabFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.framelayout, new SanPhamNamFragment()).commit();
 
 
 
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (menuItem.getItemId()){
                     case R.id.nav_home:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new TabFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new SanPhamNamFragment()).commit();
                         Toast.makeText(MainActivity.this, "Trang chủ", Toast.LENGTH_SHORT).show();
                         toolbar_title.setText("Home");
                         break;
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                         //Toast.makeText(MainActivity.this, "Thống Kê", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_hoadon:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new HoaDonFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new TabFragment()).commit();
                         Toast.makeText(MainActivity.this, "Hóa đơn", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_loaisanpham:
@@ -200,6 +201,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new TabFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new SanPhamNamFragment()).commit();
     }
 }

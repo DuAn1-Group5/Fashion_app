@@ -12,13 +12,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fashion_app.R;
 import com.example.fashion_app.dao.ChiTietHoaDonDAO;
 import com.example.fashion_app.dao.LoaiSanPhamDAO;
 import com.example.fashion_app.fragment.ChiTietSanPhamFragment;
+import com.example.fashion_app.fragment.GioHangFragment;
 import com.example.fashion_app.model.ChiTietHoaDon;
 import com.example.fashion_app.model.LoaiSanPham;
 import com.squareup.picasso.Picasso;
@@ -66,8 +69,12 @@ public class ChiTietHoaDonAdapter extends RecyclerView.Adapter<ChiTietHoaDonAdap
             public void onClick(View view) {
                 dao = new ChiTietHoaDonDAO(context);
                 dao.delete(listCTHD.get(position).getMaChitiethoadon());
+
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                Fragment myFragment = new GioHangFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, myFragment).addToBackStack(null).commit();
                 Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
-                notifyDataSetChanged();
+
             }
         });
 

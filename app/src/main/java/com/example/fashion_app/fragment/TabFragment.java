@@ -28,8 +28,8 @@ public class TabFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tabLayout_sanpham);
 
         adapter = new TabAdapter(getActivity().getSupportFragmentManager());
-        adapter.addFragment(new SanPhamNamFragment(), "Sản phẩm nam");
-        adapter.addFragment(new SanPhamNuFragment(), "Sản phẩm nữ");
+        adapter.addFragment(new HoaDonFragment(), "Tất cả hóa đơn");
+        adapter.addFragment(new HoaDonChoXuLyFragment(), "Hóa đơn chờ xác nhận");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

@@ -66,6 +66,28 @@ public class HoaDonDAO {
         return list;
     }
 
+    public ArrayList<HoaDon> getHoaDonChuaXuLy() {
+        ArrayList<HoaDon> list = new ArrayList<>();
+        databaseReference = FirebaseDatabase.getInstance().getReference("HoaDon");
+        databaseReference.orderByChild("trangThai").equalTo("Đang xử lý").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    HoaDon hoaDon = snapshot.getValue(HoaDon.class);
+                    hoaDon.setMaHoadon(snapshot.getKey());
+                    list.add(hoaDon);
+                }
+                hoaDonInterface.notifyData();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return list;
+    }
+
 
     public interface HoaDonInterface {
         void notifyData();
