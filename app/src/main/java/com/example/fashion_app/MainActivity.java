@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_list:
                         //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new Fragment2()).commit();
                         //Toast.makeText(MainActivity.this, "Quản Lý Chi", Toast.LENGTH_SHORT).show();
+                        toolbar_title.setText("Danh sách hóa đơn");
                         break;
                     case R.id.nav_change:
                         Intent i = new Intent(MainActivity.this, ChangePassActivity.class);
@@ -109,11 +110,13 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_hoadon:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new TabFragment()).commit();
                         Toast.makeText(MainActivity.this, "Hóa đơn", Toast.LENGTH_SHORT).show();
+                        toolbar_title.setText("Hóa đơn");
                         break;
                     case R.id.nav_loaisanpham:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new LoaiSanPhamFragment()).commit();
                         Toast.makeText(MainActivity.this, "Loại sản phẩm", Toast.LENGTH_SHORT).show();
                         toolbar_title.setText("Loại Sản Phẩm");
+                        toolbar_title.setText("Loại sản phẩm");
                         break;
                     case R.id.nav_thoat:
                         FirebaseAuth.getInstance().signOut();
@@ -164,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
         if(menuItem.getItemId()==R.id.cart) {
             //code vô
+            toolbar_title.setText("Giỏ hàng");
             HoaDonAdapter.maHoaDon = "";
             getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new GioHangFragment()).commit();
             Toast.makeText(this, "Giỏ Hàng", Toast.LENGTH_SHORT).show();
@@ -201,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        toolbar_title.setText("Home");
         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new SanPhamNamFragment()).commit();
     }
 }

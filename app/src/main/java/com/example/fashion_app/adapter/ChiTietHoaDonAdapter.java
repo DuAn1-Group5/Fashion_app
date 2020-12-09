@@ -87,6 +87,10 @@ public class ChiTietHoaDonAdapter extends RecyclerView.Adapter<ChiTietHoaDonAdap
                         "", listCTHD.get(position).getMaSanpham(), listCTHD.get(position).getTenSanPham(),
                         listCTHD.get(position).getGiaSanPham(), listCTHD.get(position).getHinh());
                 dao.update(listCTHD.get(position).getMaChitiethoadon(), chiTietHoaDon);
+
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                Fragment myFragment = new GioHangFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, myFragment).addToBackStack(null).commit();
             }
         });
         holder.ivTru.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +102,10 @@ public class ChiTietHoaDonAdapter extends RecyclerView.Adapter<ChiTietHoaDonAdap
                         "", listCTHD.get(position).getMaSanpham(), listCTHD.get(position).getTenSanPham(),
                         listCTHD.get(position).getGiaSanPham(), listCTHD.get(position).getHinh());
                 dao.update(listCTHD.get(position).getMaChitiethoadon(), chiTietHoaDon);
+
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                Fragment myFragment = new GioHangFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, myFragment).addToBackStack(null).commit();
             }
         });
 
