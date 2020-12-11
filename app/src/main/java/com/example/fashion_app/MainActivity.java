@@ -25,6 +25,7 @@ import com.example.fashion_app.fragment.HomeFragment;
 import com.example.fashion_app.fragment.LoaiSanPhamFragment;
 import com.example.fashion_app.fragment.SanPhamNamFragment;
 import com.example.fashion_app.fragment.TabFragment;
+import com.example.fashion_app.fragment.ThongkeFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
@@ -88,10 +89,10 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Giỏ Hàng", Toast.LENGTH_SHORT).show();
                         toolbar_title.setText("Giỏ hàng");
                         break;
-                    case R.id.nav_list:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new Fragment2()).commit();
+                    case R.id.nav_thongke:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new ThongkeFragment()).commit();
                         //Toast.makeText(MainActivity.this, "Quản Lý Chi", Toast.LENGTH_SHORT).show();
-                        toolbar_title.setText("Danh sách hóa đơn");
+                        toolbar_title.setText("Thống kê");
                         break;
                     case R.id.nav_change:
                         Intent i = new Intent(MainActivity.this, ChangePassActivity.class);

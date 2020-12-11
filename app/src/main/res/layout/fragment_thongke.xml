@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/rety"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/head"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:text="Thống kê tháng:"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:gravity="center_vertical"/>
+
+            <Button
+                android:id="@+id/btntuThg"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Từ Tháng"
+                android:background="@drawable/box_border"/>
+
+            <Button
+                android:id="@+id/btndenThag"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Đến Tháng"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/box_border"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/setThangNd"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:background="@drawable/bg_btn_white"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:hint="Nhấp vào để thống kê"/>
+
+
+
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/RCVTkNd"
+        android:layout_below="@+id/rety">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+
+</RelativeLayout>

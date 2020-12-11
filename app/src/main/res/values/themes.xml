@@ -33,4 +33,9 @@
         <item name="colorPrimaryDark">#FEFEFF</item>
         <item name="colorAccent">#03DAC5</item>
     </style>
+    <style name="DatePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">#E42525</item>
+        <item name="colorPrimaryDark">#9C27B0</item>
+        <item name="colorAccent">#9C27B0</item>
+    </style>
 </resources>

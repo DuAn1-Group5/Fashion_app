@@ -15,9 +15,9 @@
         <item android:id="@+id/nav_hoadon"
             android:icon="@drawable/ic_loaisp"
             android:title="Hóa đơn"/>
-        <item android:id="@+id/nav_list"
+        <item android:id="@+id/nav_thongke"
             android:icon="@drawable/ic_list"
-            android:title="Danh sách hóa đơn"/>
+            android:title="Thống kê"/>
         <item android:id="@+id/nav_change"
             android:icon="@drawable/ic_changepass"
             android:title="Đổi mật khẩu"/>

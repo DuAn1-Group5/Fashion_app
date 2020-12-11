@@ -109,4 +109,8 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.RecyclerHo
             btnDel = itemView.findViewById(R.id.btnDel);
         }
     }
+    public void filterlist(ArrayList<HoaDon> listfilter){
+        listHD = listfilter;
+        notifyDataSetChanged();
+    }
 }
