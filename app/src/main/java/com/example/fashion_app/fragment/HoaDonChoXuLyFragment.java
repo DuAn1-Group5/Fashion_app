@@ -33,7 +33,7 @@ public class HoaDonChoXuLyFragment extends Fragment implements HoaDonDAO.HoaDonI
         dao = new HoaDonDAO(getContext(), this);
         listHD = new ArrayList<>();
 
-        listHD = dao.getHoaDonChuaXuLy();
+        listHD = dao.getTrangThaiHoaDon("Đang xử lý");
         adapter = new HoaDonAdapter(getActivity(), listHD);
         rv_hoadonchoxuly.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_hoadonchoxuly.setAdapter(adapter);

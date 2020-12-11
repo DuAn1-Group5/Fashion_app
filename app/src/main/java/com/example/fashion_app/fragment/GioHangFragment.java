@@ -82,7 +82,6 @@ public class GioHangFragment extends Fragment implements ChiTietHoaDonDAO.ChiTie
 
 
 
-
         adapter = new ChiTietHoaDonAdapter(getActivity(), listCTHD);
         RcvGioHang.setLayoutManager(new LinearLayoutManager(getContext()));
         RcvGioHang.setAdapter(adapter);
@@ -93,7 +92,7 @@ public class GioHangFragment extends Fragment implements ChiTietHoaDonDAO.ChiTie
                 mData = FirebaseDatabase.getInstance().getReference();
                 maHoaDon1 = mData.push().getKey();
                 for (int i = 0; i<listCTHD.size(); i++){
-                    ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon("1", listCTHD.get(i).getSize(), maHoaDon1,
+                    ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon(String.valueOf(ChiTietHoaDonAdapter.soLuong), listCTHD.get(i).getSize(), maHoaDon1,
                             listCTHD.get(i).getMaSanpham(), listCTHD.get(i).getTenSanPham(), listCTHD.get(i).getGiaSanPham(), listCTHD.get(i).getHinh());
                     dao.update(listCTHD.get(i).getMaChitiethoadon(), chiTietHoaDon);
                 }

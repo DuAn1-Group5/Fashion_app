@@ -34,7 +34,7 @@ public class ChiTietHoaDonAdapter extends RecyclerView.Adapter<ChiTietHoaDonAdap
     ArrayList<ChiTietHoaDon> listCTHD;
     ChiTietHoaDonDAO dao;
 
-    int soLuong = 0;
+    public static int soLuong = 0;
 
     public ChiTietHoaDonAdapter(Activity context, ArrayList<ChiTietHoaDon> listCTHD) {
         this.context = context;

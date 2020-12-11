@@ -55,12 +55,9 @@ public class ThongkeFragment extends Fragment implements HoaDonDAO.HoaDonInterfa
         final int month = cldr.get(Calendar.MONTH);
         final int year = cldr.get(Calendar.YEAR);
 
-        dao = new HoaDonDAO(getContext(), this);
         listHD = new ArrayList<>();
-        listHD = dao.getAll();
-        adapter = new HoaDonAdapter(getActivity(), listHD);
-        rcv_thongke.setLayoutManager(new LinearLayoutManager(getContext()));
-        rcv_thongke.setAdapter(adapter);
+        dao = new HoaDonDAO(getContext(), this);
+
 
         btnTuThg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +105,7 @@ public class ThongkeFragment extends Fragment implements HoaDonDAO.HoaDonInterfa
         tvsetThag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                listHD.clear();
                 Query Qdatas = databaseReference.orderByChild("ngay").startAt(btnTuThg.getText().toString()).endAt(btnDenThg.getText().toString());
 
                 Qdatas.addValueEventListener(new ValueEventListener() {
@@ -117,9 +115,27 @@ public class ThongkeFragment extends Fragment implements HoaDonDAO.HoaDonInterfa
                         for (DataSnapshot ds : snapshot.getChildren()){
                             Map<String,Object> map = (Map<String,Object>) ds.getValue();
                             Object price = map.get("tongTien");
+                            Object trangThai = map.get("trangThai");
+                            Object ngay = map.get("ngay");
+                            Object maKhachhang = map.get("maKhachhang");
+
+                            HoaDon hoaDon = new HoaDon(String.valueOf(ngay), String.valueOf(trangThai), String.valueOf(maKhachhang), String.valueOf(price));
+                            listHD.add(hoaDon);
                             Log.d("TAG", "onDataChange: "+price);
-                            double tValue = Double.parseDouble(String.valueOf(price));
-                            sum += tValue;
+                            if (trangThai.equals("Đã thanh toán")){
+                                double tValue = Double.parseDouble(String.valueOf(price));
+                                sum += tValue;
+
+
+                                //listHD = dao.getTrangThaiHoaDon("Đã thanh toán");
+
+                                adapter = new HoaDonAdapter(getActivity(), listHD);
+                                rcv_thongke.setLayoutManager(new LinearLayoutManager(getContext()));
+                                rcv_thongke.setAdapter(adapter);
+                            }else{
+
+                            }
+
                         }
                         if (tvsetThag.equals("")){
                             tvsetThag.setText("Không có hóa đơn");
@@ -127,8 +143,7 @@ public class ThongkeFragment extends Fragment implements HoaDonDAO.HoaDonInterfa
                             tvsetThag.setText(sum+"VND");
 
                         }
-                        filter(btnTuThg.getText().toString());
-                        filter("Đã thanh toán");
+
                     }
 
                     @Override

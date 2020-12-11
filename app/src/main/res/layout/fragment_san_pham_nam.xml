@@ -11,23 +11,15 @@
     <!-- TODO: Update blank fragment layout -->
 
     <EditText
-        android:layout_width="340dp"
-        android:layout_height="30dp"
         android:id="@+id/edtSearch"
-        android:background="@drawable/box_border"
+        android:layout_width="340dp"
+        android:layout_height="35dp"
+        android:background="@drawable/border"
         android:shadowColor="@color/black"
         android:layout_margin="10dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"/>
-
-    <Button
-        android:id="@+id/btnSearch"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="7dp"
-        android:layout_toRightOf="@+id/edtSearch"
-        android:background="@drawable/ic_search"
-        android:layout_marginTop="10dp"/>
+        android:hint="Tìm kiếm"
+        android:gravity="center_vertical"
+        />
 
     <Spinner
         android:id="@+id/spnProduct"

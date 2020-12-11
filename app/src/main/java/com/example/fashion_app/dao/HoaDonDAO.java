@@ -66,10 +66,11 @@ public class HoaDonDAO {
         return list;
     }
 
-    public ArrayList<HoaDon> getHoaDonChuaXuLy() {
+
+    public ArrayList<HoaDon> getTrangThaiHoaDon(String trangThai) {
         ArrayList<HoaDon> list = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference("HoaDon");
-        databaseReference.orderByChild("trangThai").equalTo("Đang xử lý").addValueEventListener(new ValueEventListener() {
+        databaseReference.orderByChild("trangThai").equalTo(trangThai).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {

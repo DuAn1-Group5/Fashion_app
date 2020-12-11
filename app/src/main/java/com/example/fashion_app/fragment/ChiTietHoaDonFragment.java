@@ -44,6 +44,7 @@ public class ChiTietHoaDonFragment extends Fragment implements ChiTietHoaDonDAO.
 
     String maHoaDon;
     double tongTien;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
