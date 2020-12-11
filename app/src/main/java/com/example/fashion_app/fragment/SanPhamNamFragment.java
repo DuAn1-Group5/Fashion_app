@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +30,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fashion_app.LoginActivity;
 import com.example.fashion_app.R;
 import com.example.fashion_app.adapter.LoaiSanPhamAdapter;
 import com.example.fashion_app.adapter.SanPhamAdapter;
@@ -68,11 +71,13 @@ public class SanPhamNamFragment extends Fragment implements SanPhamDAO.SanPhamIn
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     ImageView iv_addmenu;
     ArrayAdapter<LoaiSanPham> dataAdapter;
+    ArrayAdapter<LoaiSanPham> dataAdapterSP;
+    Spinner spnProduct;
 
     private final int PICK_IMAGE_REQUEST = 71;
     private Uri filePath;
     StorageReference storageReference;
-
+    String maLoaiSP;
     TextView toolbarTittle;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,6 +87,8 @@ public class SanPhamNamFragment extends Fragment implements SanPhamDAO.SanPhamIn
 
         rcv_sanpham = view.findViewById(R.id.rcv_sanpham);
         fab_addSanPham = view.findViewById(R.id.fab_addSanPham);
+        spnProduct = view.findViewById(R.id.spnProduct);
+
 
         sanPhamDAO = new SanPhamDAO(getActivity(), this);
         list = new ArrayList<SanPham>();
@@ -92,6 +99,71 @@ public class SanPhamNamFragment extends Fragment implements SanPhamDAO.SanPhamIn
         rcv_sanpham.setLayoutManager(gridLayoutManager);
         rcv_sanpham.setAdapter(sanPhamAdapter);
         list.clear();
+
+        //chuc nang tim kiem san pham
+        final EditText edSeach = view.findViewById(R.id.edtSearch);
+        edSeach.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
+
+
+
+        // show du lieu qua ten san pham chon trong spinner
+        getDuLieuMaLoaiSanPham();
+        dataAdapterSP = new ArrayAdapter<LoaiSanPham>(getContext(), android.R.layout.simple_spinner_item, listmaLoai);
+        dataAdapterSP.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnProduct.setAdapter(dataAdapterSP);
+        spnProduct.setSelection(checkPositionmaLoai(maLoai));
+
+        spnProduct.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                maLoaiSP = String.valueOf(spnProduct.getSelectedItem());
+                if (maLoaiSP.equalsIgnoreCase("All")){
+                    list = new ArrayList<SanPham>();
+                    list.clear();
+                    list = sanPhamDAO.getAll();
+                }else {
+                    list = new ArrayList<SanPham>();
+                    list.clear();
+                    list = sanPhamDAO.getAll(maLoaiSP);
+                }
+
+                sanPhamAdapter = new SanPhamAdapter(getActivity(), list);
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2,GridLayoutManager.VERTICAL,false);
+                rcv_sanpham.setLayoutManager(gridLayoutManager);
+                rcv_sanpham.setAdapter(sanPhamAdapter);
+                list.clear();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                maLoaiSP = "All";
+            }
+        });
+        //khi la tai khoan admin thi moi show ra floating action buttoon con neu la user thi hide
+        if(LoginActivity.chucVu.equalsIgnoreCase("admin")){
+            fab_addSanPham.setVisibility(View.VISIBLE);
+        }else{
+            fab_addSanPham.setVisibility(View.GONE);
+        }
+
+
+
+        // khi bam vao floating action button de thuc hien insert du lieu
 
         fab_addSanPham.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -235,5 +307,33 @@ public class SanPhamNamFragment extends Fragment implements SanPhamDAO.SanPhamIn
         }
     }
 
+    public void getDuLieuMaLoaiSanPham(){
+        databaseReference.child("LoaiSanPham").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listmaLoai.clear();
+                listmaLoai.add(0,new LoaiSanPham("All"));
+                for(DataSnapshot item : snapshot.getChildren()){
+                    listmaLoai.add(item.getValue(LoaiSanPham.class));
+                }
+                dataAdapterSP.notifyDataSetChanged();
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    public void filter(String text){
+        ArrayList<SanPham> listfilter = new ArrayList<>();
+
+        for (SanPham item : list){
+            if (item.getTenSanPham().toUpperCase().contains(text.toUpperCase())){
+                listfilter.add(item);
+            }
+        }
+        sanPhamAdapter.filterlist(listfilter);
+    }
 
 }

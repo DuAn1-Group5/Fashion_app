@@ -102,7 +102,7 @@ public class GioHangFragment extends Fragment implements ChiTietHoaDonDAO.ChiTie
                 Date d = new Date();
                 CharSequence s  = DateFormat.format("yyyy/MM/dd ", d.getTime());
                 String ngay = (String)s;
-                HoaDon hoaDon = new HoaDon(ngay, "Đang xử lý", null, String.valueOf(tongTien));
+                HoaDon hoaDon = new HoaDon(ngay, "Đang xử lý", LoginActivity.ma, String.valueOf(tongTien));
                 hoaDonDAO.insert(hoaDon);
 
             }

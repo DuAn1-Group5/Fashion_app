@@ -37,6 +37,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.RecyclerHo
     public static String maHoaDon = "";
     public static String trangThai = "";
     public static String thoiGian = "";
+    public static String maNguoiDung = "";
 
     public HoaDonAdapter(Activity context, ArrayList<HoaDon> listHD) {
         this.context = context;
@@ -60,13 +61,12 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.RecyclerHo
         holder.tvNgay.setText("Ngày: "+listHD.get(position).getNgay());
         holder.tvTrangThai.setText("Trạng thái: "+listHD.get(position).getTrangThai());
         holder.tvTongTien.setText("Tổng tiền: "+listHD.get(position).getTongTien());
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 maHoaDon = listHD.get(position).getMaHoadon();
                 Log.d("TAG", "onClick: "+maHoaDon);
-
+                maNguoiDung = listHD.get(position).getMaKhachhang();
                 trangThai = listHD.get(position).getTrangThai();
                 thoiGian = listHD.get(position).getNgay();
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();

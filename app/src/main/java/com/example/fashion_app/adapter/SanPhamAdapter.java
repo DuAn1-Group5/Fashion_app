@@ -141,5 +141,8 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.Recycler
                 iv_product = itemView.findViewById(R.id.iv_product);
         }
     }
-
+    public void filterlist(ArrayList<SanPham> listfilter){
+        listSP = listfilter;
+        notifyDataSetChanged();
+    }
 }

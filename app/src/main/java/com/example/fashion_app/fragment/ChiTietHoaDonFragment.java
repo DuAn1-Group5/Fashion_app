@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.fashion_app.LoginActivity;
 import com.example.fashion_app.R;
 import com.example.fashion_app.adapter.ChiTietHoaDonAdapter;
 import com.example.fashion_app.adapter.HoaDonAdapter;
@@ -37,7 +38,7 @@ public class ChiTietHoaDonFragment extends Fragment implements ChiTietHoaDonDAO.
     ArrayList<ChiTietHoaDon> listCTHD;
 
     DatabaseReference mData;
-    TextView tvMaHoaDon, tvThoiGian, tvTongTien;
+    TextView tvMaHoaDon, tvThoiGian, tvTongTien, tvMaNguoiDung, tvTenNguoiDung;
     Button btnTongTien;
     RecyclerView recyclerView_hoadon;
 
@@ -53,6 +54,8 @@ public class ChiTietHoaDonFragment extends Fragment implements ChiTietHoaDonDAO.
         tvThoiGian = view.findViewById(R.id.tvThoiGian);
         tvTongTien = view.findViewById(R.id.tvTongTien);
         recyclerView_hoadon = view.findViewById(R.id.recyclerView_hoadon);
+        tvMaNguoiDung = view.findViewById(R.id.tvMaNguoiDung);
+        tvTenNguoiDung = view.findViewById(R.id.tvTenNguoiDung);
 
 
         dao = new ChiTietHoaDonDAO(getContext(), this);
@@ -70,6 +73,8 @@ public class ChiTietHoaDonFragment extends Fragment implements ChiTietHoaDonDAO.
             layTongGiaTien();
             tvThoiGian.setText("Ngày: "+HoaDonAdapter.thoiGian);
             tvMaHoaDon.setText("Mã hóa đơn: "+HoaDonAdapter.maHoaDon);
+            tvMaNguoiDung.setText("Mã người dùng: "+HoaDonAdapter.maNguoiDung);
+            tvTenNguoiDung.setText("Tên người dùng: ");
             btnTongTien.setText(""+HoaDonAdapter.trangThai);
             if (HoaDonAdapter.trangThai.equalsIgnoreCase("Đã thanh toán")){
                 btnTongTien.setEnabled(false);
@@ -80,7 +85,7 @@ public class ChiTietHoaDonFragment extends Fragment implements ChiTietHoaDonDAO.
             @Override
             public void onClick(View view) {
                 HoaDonDAO hoaDonDAO = new HoaDonDAO(getContext());
-                hoaDonDAO.update(HoaDonAdapter.maHoaDon, new HoaDon(HoaDonAdapter.thoiGian, "Đã thanh toán", null, tongTien+""));
+                hoaDonDAO.update(HoaDonAdapter.maHoaDon, new HoaDon(HoaDonAdapter.thoiGian, "Đã thanh toán", LoginActivity.ma, tongTien+""));
                 btnTongTien.setText("Đã thanh toán");
                 btnTongTien.setEnabled(false);
             }

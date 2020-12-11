@@ -68,6 +68,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public static String ma;
     public static String matkhau;
+    public static String tenNguoiDung;
+    public static String chucVu;
     private FirebaseAuth.AuthStateListener authStateListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -202,12 +204,14 @@ public class LoginActivity extends AppCompatActivity {
                                     Bundle bundle = new Bundle();
                                     String email = users.getEmail();
                                     String name = users.getTenNguoidung();
+                                    tenNguoiDung = name;
                                     String image = "";
                                     bundle.putString("email", email);
                                     bundle.putString("name", name);
                                     bundle.putString("avatar", image);
                                     ma = users.getMaNguoidung();
                                     matkhau = users.getMatKhau();
+                                    chucVu = users.getChucvu();
                                     i.putExtra("infomation", bundle);
                                     startActivity(i);
                                     Toast.makeText(getBaseContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();

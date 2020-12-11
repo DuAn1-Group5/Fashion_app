@@ -138,6 +138,28 @@ public class SanPhamDAO {
         databaseReference.removeValue();
     }
 
+    public ArrayList<SanPham> getAll(String maLoai) {
+        ArrayList<SanPham> listSp = new ArrayList<>();
+        databaseReference = FirebaseDatabase.getInstance().getReference("SanPham");
+        databaseReference.orderByChild("maLoai").equalTo(maLoai).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange( DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    SanPham sanPham = snapshot.getValue(SanPham.class);
+                    sanPham.setMaSanPham(snapshot.getKey());
+                    listSp.add(sanPham);
+                }
+                sanPhamInterface.notifyData();
+            }
+
+            @Override
+            public void onCancelled( DatabaseError error) {
+
+            }
+        });
+        return listSp;
+    }
+
     public ArrayList<SanPham> getAll() {
         ArrayList<SanPham> listSp = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference("SanPham");
