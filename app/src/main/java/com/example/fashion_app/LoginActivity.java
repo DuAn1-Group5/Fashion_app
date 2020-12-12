@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     public static String ma;
     public static String matkhau;
     public static String tenNguoiDung;
-    public static String chucVu;
+    public static String chucVu = "user";
     private FirebaseAuth.AuthStateListener authStateListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,8 +110,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser != null){
-                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, MainActivity2.class));
+                    //Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                    //startActivity(new Intent(LoginActivity.this, MainActivity2.class));
                 }
                 else {
                     Toast.makeText(LoginActivity.this, "Hãy Đăng Nhập", Toast.LENGTH_SHORT).show();
