@@ -12,6 +12,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class HoaDonDAO {
     Context context;
@@ -44,6 +45,27 @@ public class HoaDonDAO {
         databaseReference.removeValue();
     }
 
+    public ArrayList<HoaDon> getAll(String maNguoiDung) {
+        ArrayList<HoaDon> list = new ArrayList<>();
+        databaseReference = FirebaseDatabase.getInstance().getReference("HoaDon");
+        databaseReference.orderByChild("maKhachhang").equalTo(maNguoiDung).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    HoaDon hoaDon = snapshot.getValue(HoaDon.class);
+                    hoaDon.setMaHoadon(snapshot.getKey());
+                    list.add(hoaDon);
+                }
+                hoaDonInterface.notifyData();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return list;
+    }
     public ArrayList<HoaDon> getAll() {
         ArrayList<HoaDon> list = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference("HoaDon");
@@ -67,7 +89,7 @@ public class HoaDonDAO {
     }
 
 
-    public ArrayList<HoaDon> getTrangThaiHoaDon(String trangThai) {
+    public ArrayList<HoaDon> getTrangThaiHoaDon(String trangThai, String maKhachHang) {
         ArrayList<HoaDon> list = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference("HoaDon");
         databaseReference.orderByChild("trangThai").equalTo(trangThai).addValueEventListener(new ValueEventListener() {
@@ -76,10 +98,48 @@ public class HoaDonDAO {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     HoaDon hoaDon = snapshot.getValue(HoaDon.class);
                     hoaDon.setMaHoadon(snapshot.getKey());
-                    list.add(hoaDon);
+
+                    try{
+                        if (maKhachHang.equalsIgnoreCase("admin")){
+                            HoaDon hoaDon1 = snapshot.getValue(HoaDon.class);
+                            hoaDon1.setMaHoadon(snapshot.getKey());
+                            list.add(hoaDon1);
+                        }
+                        else if (hoaDon.getMaKhachhang().equalsIgnoreCase(maKhachHang)){
+                            list.add(hoaDon);
+                        }
+                    }catch (Exception e){
+
+                    }
+
+
+
+
+
+//                    Map<String,Object> map = (Map<String,Object>) snapshot.getValue();
+//                    Object price = map.get("tongTien");
+//                    Object trangThai = map.get("trangThai");
+//                    Object ngay = map.get("ngay");
+//                    Object maKhachhang = map.get("maKhachhang");
+//                    Object diaChiGiaoHang = map.get("diaChiGiaoHang");
+//
+//                    try{
+//                        if (maKhachhang.equals(maKhachHang)){
+//                            HoaDon hoaDon = new HoaDon(String.valueOf(ngay), String.valueOf(trangThai), String.valueOf(maKhachhang), String.valueOf(price), String.valueOf(diaChiGiaoHang));
+//                            //hoaDon.setMaHoadon(snapshot.getKey());
+//                            list.add(hoaDon);
+//                        }else{
+//
+//                        }
+//                    }catch (Exception e){
+//
+//                    }
+
                 }
                 hoaDonInterface.notifyData();
             }
+
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {

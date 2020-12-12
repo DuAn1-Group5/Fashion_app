@@ -18,6 +18,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fashion_app.LoginActivity;
 import com.example.fashion_app.R;
 import com.example.fashion_app.dao.HoaDonDAO;
 import com.example.fashion_app.dao.LoaiSanPhamDAO;
@@ -38,6 +39,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.RecyclerHo
     public static String trangThai = "";
     public static String thoiGian = "";
     public static String maNguoiDung = "";
+    public static String diaChiGiaoHang = "";
 
     public HoaDonAdapter(Activity context, ArrayList<HoaDon> listHD) {
         this.context = context;
@@ -69,20 +71,26 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.RecyclerHo
                 maNguoiDung = listHD.get(position).getMaKhachhang();
                 trangThai = listHD.get(position).getTrangThai();
                 thoiGian = listHD.get(position).getNgay();
+                diaChiGiaoHang = listHD.get(position).getDiaChiGiaoHang();
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 Fragment myFragment = new ChiTietHoaDonFragment();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, myFragment).addToBackStack(null).commit();
             }
         });
 
-        holder.btnDel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dao.delete(listHD.get(position).getMaHoadon());
-                Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
-                listHD.clear();
-            }
-        });
+        if (LoginActivity.chucVu.equals("admin")){
+            holder.btnDel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dao.delete(listHD.get(position).getMaHoadon());
+                    Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                    listHD.clear();
+                }
+            });
+        }else{
+            holder.btnDel.setVisibility(View.GONE);
+        }
+
 
     }
 

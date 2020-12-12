@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText edtregUsername, edtregPassword, edtregEmail, edtregPasswordAgain;
+    EditText edtregUsername, edtregPassword, edtregEmail, edtregPasswordAgain, edtHoTenDayDu;
     Button btnregDangKi;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference mDatabase;
@@ -40,6 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
         edtregPassword = findViewById(R.id.edtregPassword);
         btnregDangKi = findViewById(R.id.btnregDangKi);
         edtregPasswordAgain = findViewById(R.id.edtregPasswordAgain);
+        edtHoTenDayDu = findViewById(R.id.edtHoTenDayDu);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         mDatabase = firebaseDatabase.getReference("users");
@@ -53,8 +54,9 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = edtregPassword.getText().toString();
                 String passwordAgain = edtregPasswordAgain.getText().toString();
                 String email = edtregEmail.getText().toString();
+                String hoTen = edtHoTenDayDu.getText().toString();
 
-                if(userName.isEmpty() || password.isEmpty() || passwordAgain.isEmpty() || email.isEmpty()){
+                if(userName.isEmpty() || password.isEmpty() || passwordAgain.isEmpty() || email.isEmpty() || hoTen.isEmpty()){
                     if (userName.isEmpty()){
                         edtregUsername.setError("Không được bỏ trống tên đăng nhập");
                     }else if (password.isEmpty()){
@@ -63,12 +65,14 @@ public class RegisterActivity extends AppCompatActivity {
                         edtregPasswordAgain.setError("Không được bỏ trống nhập lại mật khẩu");
                     }else if(email.isEmpty()){
                         edtregEmail.setError("Không được bỏ trống email");
+                    }else if(hoTen.isEmpty()){
+                        edtHoTenDayDu.setError("Không được bỏ trống Họ tên đầy đủ");
                     }
 
                 }else if(!passwordAgain.equals(password)){
                     edtregPasswordAgain.setError("Hai mật khẩu không trùng nhau");
                 }else{
-                    user = new NguoiDung(userName, email,"user", password);
+                    user = new NguoiDung(userName, email,"user", password, hoTen);
                     registerUser(email,password);
                 }
 

@@ -13,9 +13,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="360dp"
-                android:layout_height="255dp"
+                android:layout_height="400dp"
                 android:orientation="vertical"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
@@ -55,6 +56,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Thoi gian"
+                    android:textSize="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#0B0A0B"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tvSoDienThoai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Số điện thoại"
+                    android:textSize="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#0B0A0B"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tvDiaChi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Địa chỉ"
                     android:textSize="20dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginLeft="10dp"

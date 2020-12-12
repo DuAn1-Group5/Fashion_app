@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -47,6 +48,7 @@ public class GioHangFragment extends Fragment implements ChiTietHoaDonDAO.ChiTie
     HoaDonDAO hoaDonDAO;
     RecyclerView RcvGioHang;
     Button btnBuyNow;
+    EditText edtDiaChiGiaoHang;
     ArrayList<HoaDon> listHD;
 
     DatabaseReference mData;
@@ -61,6 +63,7 @@ public class GioHangFragment extends Fragment implements ChiTietHoaDonDAO.ChiTie
 
         RcvGioHang = view.findViewById(R.id.RcvGioHang);
         btnBuyNow = view.findViewById(R.id.btnBuyNow);
+        edtDiaChiGiaoHang = view.findViewById(R.id.edtDiaChiGiaoHang);
 
         listHD = new ArrayList<>();
         dao = new ChiTietHoaDonDAO(getContext(), this);
@@ -88,21 +91,26 @@ public class GioHangFragment extends Fragment implements ChiTietHoaDonDAO.ChiTie
         btnBuyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Thanh Toán thành công", Toast.LENGTH_SHORT).show();
-                mData = FirebaseDatabase.getInstance().getReference();
-                maHoaDon1 = mData.push().getKey();
-                for (int i = 0; i<listCTHD.size(); i++){
-                    ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon(String.valueOf(ChiTietHoaDonAdapter.soLuong), listCTHD.get(i).getSize(), maHoaDon1,
-                            listCTHD.get(i).getMaSanpham(), listCTHD.get(i).getTenSanPham(), listCTHD.get(i).getGiaSanPham(), listCTHD.get(i).getHinh());
-                    dao.update(listCTHD.get(i).getMaChitiethoadon(), chiTietHoaDon);
-                }
-
+                String diaChiNhanHang = edtDiaChiGiaoHang.getText().toString();
                 hoaDonDAO = new HoaDonDAO(getContext());
                 Date d = new Date();
                 CharSequence s  = DateFormat.format("dd-MM-yyyy ", d.getTime());
                 String ngay = (String)s;
-                HoaDon hoaDon = new HoaDon(ngay, "Đang xử lý", LoginActivity.ma, String.valueOf(tongTien));
-                hoaDonDAO.insert(hoaDon);
+                if (diaChiNhanHang.length() == 0){
+                    Toast.makeText(getContext(), "Bạn phải nhập địa chỉ nhận hàng", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "Thanh Toán thành công", Toast.LENGTH_SHORT).show();
+                    mData = FirebaseDatabase.getInstance().getReference();
+                    maHoaDon1 = mData.push().getKey();
+                    for (int i = 0; i<listCTHD.size(); i++){
+                        ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon(String.valueOf(ChiTietHoaDonAdapter.soLuong), listCTHD.get(i).getSize(), maHoaDon1,
+                                listCTHD.get(i).getMaSanpham(), listCTHD.get(i).getTenSanPham(), listCTHD.get(i).getGiaSanPham(), listCTHD.get(i).getHinh());
+                        dao.update(listCTHD.get(i).getMaChitiethoadon(), chiTietHoaDon);
+                    }
+                    HoaDon hoaDon = new HoaDon(ngay, "Đang xử lý", LoginActivity.ma, String.valueOf(tongTien), diaChiNhanHang);
+                    hoaDonDAO.insert(hoaDon);
+                }
+
 
             }
         });

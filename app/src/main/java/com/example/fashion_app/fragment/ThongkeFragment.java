@@ -118,8 +118,9 @@ public class ThongkeFragment extends Fragment implements HoaDonDAO.HoaDonInterfa
                             Object trangThai = map.get("trangThai");
                             Object ngay = map.get("ngay");
                             Object maKhachhang = map.get("maKhachhang");
+                            Object diaChiGiaoHang = map.get("diaChiGiaoHang");
 
-                            HoaDon hoaDon = new HoaDon(String.valueOf(ngay), String.valueOf(trangThai), String.valueOf(maKhachhang), String.valueOf(price));
+                            HoaDon hoaDon = new HoaDon(String.valueOf(ngay), String.valueOf(trangThai), String.valueOf(maKhachhang), String.valueOf(price), String.valueOf(diaChiGiaoHang));
                             listHD.add(hoaDon);
                             Log.d("TAG", "onDataChange: "+price);
                             if (trangThai.equals("Đã thanh toán")){

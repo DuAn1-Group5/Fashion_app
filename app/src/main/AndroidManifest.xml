@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fashion_app">
-        <activity android:name=".GioiThieuActivity"></activity>
+        <activity android:name=".MainActivity2"></activity>
+        <activity android:name=".GioiThieuActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ChangePassActivity" />
         <activity android:name=".ScreenActivity">

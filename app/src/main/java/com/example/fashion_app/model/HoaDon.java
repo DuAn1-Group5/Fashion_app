@@ -6,14 +6,16 @@ public class HoaDon {
     private String trangThai;
     private String maKhachhang;
     private String tongTien;
+    private String diaChiGiaoHang;
     public HoaDon() {
     }
 
-    public HoaDon(String ngay, String trangThai, String maKhachhang, String tongTien) {
+    public HoaDon(String ngay, String trangThai, String maKhachhang, String tongTien, String diaChiGiaoHang) {
         this.ngay = ngay;
         this.trangThai = trangThai;
         this.maKhachhang = maKhachhang;
         this.tongTien = tongTien;
+        this.diaChiGiaoHang = diaChiGiaoHang;
     }
 
     public String getMaHoadon() {
@@ -54,5 +56,13 @@ public class HoaDon {
 
     public void setTongTien(String tongTien) {
         this.tongTien = tongTien;
+    }
+
+    public String getDiaChiGiaoHang() {
+        return diaChiGiaoHang;
+    }
+
+    public void setDiaChiGiaoHang(String diaChiGiaoHang) {
+        this.diaChiGiaoHang = diaChiGiaoHang;
     }
 }

@@ -29,11 +29,18 @@
         android:layout_below="@+id/rety"
         android:layout_marginTop="-2dp">
         <EditText
+            android:id="@+id/edtHoTenDayDu"
+            android:layout_width="302dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="25dp"
+            android:hint="Họ tên đầy đủ" />
+        <EditText
             android:id="@+id/edtregUsername"
             android:layout_width="302dp"
             android:layout_height="60dp"
             android:layout_marginLeft="25dp"
-            android:hint="Username" />
+            android:hint="Username"
+            android:layout_below="@+id/edtHoTenDayDu"/>
         <EditText
             android:id="@+id/edtregEmail"
             android:layout_width="302dp"

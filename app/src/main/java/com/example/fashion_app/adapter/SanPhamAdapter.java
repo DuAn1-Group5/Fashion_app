@@ -20,6 +20,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fashion_app.LoginActivity;
 import com.example.fashion_app.R;
 import com.example.fashion_app.dao.SanPhamDAO;
 import com.example.fashion_app.fragment.ChiTietSanPhamFragment;
@@ -61,53 +62,56 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.Recycler
 
             }
 
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    final Dialog dialog = new Dialog(context);
-                    dialog.setContentView(R.layout.dialog_sua_xoa_sanpham);
-                    final Button btnSua = dialog.findViewById(R.id.btnSua);
-                    final Button btnXoa = dialog.findViewById(R.id.btnXoa);
+            if (LoginActivity.chucVu.equals("admin")){
+                holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+                        final Dialog dialog = new Dialog(context);
+                        dialog.setContentView(R.layout.dialog_sua_xoa_sanpham);
+                        final Button btnSua = dialog.findViewById(R.id.btnSua);
+                        final Button btnXoa = dialog.findViewById(R.id.btnXoa);
 
-                    btnSua.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Bundle bundle = new Bundle();
-                            bundle.putString("masanpham", listSP.get(position).getMaSanPham());
-                            bundle.putString("tensanpham", listSP.get(position).getTenSanPham());
-                            bundle.putString("mota", listSP.get(position).getMoTa());
-                            bundle.putString("giatien", listSP.get(position).getGiaTien());
-                            bundle.putString("soluong", listSP.get(position).getSoLuong());
-                            bundle.putString("maloai", listSP.get(position).getMaLoai());
-                            try {
-                                bundle.putString("hinhanh", listSP.get(position).getHinhanh().toString());
-                            }catch (Exception e){
+                        btnSua.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Bundle bundle = new Bundle();
+                                bundle.putString("masanpham", listSP.get(position).getMaSanPham());
+                                bundle.putString("tensanpham", listSP.get(position).getTenSanPham());
+                                bundle.putString("mota", listSP.get(position).getMoTa());
+                                bundle.putString("giatien", listSP.get(position).getGiaTien());
+                                bundle.putString("soluong", listSP.get(position).getSoLuong());
+                                bundle.putString("maloai", listSP.get(position).getMaLoai());
+                                try {
+                                    bundle.putString("hinhanh", listSP.get(position).getHinhanh().toString());
+                                }catch (Exception e){
 
+                                }
+
+                                UpdateMenu updateMenu = new UpdateMenu();
+                                updateMenu.setArguments(bundle);
+                                updateMenu.show(((AppCompatActivity)context).getFragmentManager(), updateMenu.getTag());
+                                listSP.clear();
+                                dialog.dismiss();
                             }
+                        });
 
-                            UpdateMenu updateMenu = new UpdateMenu();
-                            updateMenu.setArguments(bundle);
-                            updateMenu.show(((AppCompatActivity)context).getFragmentManager(), updateMenu.getTag());
-                            listSP.clear();
-                            dialog.dismiss();
-                        }
-                    });
+                        btnXoa.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dao = new SanPhamDAO(context);
+                                dao.delete(listSP.get(position).getMaSanPham());
+                                listSP.clear();
+                                Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                                //notifyDataSetChanged();
+                                dialog.dismiss();
+                            }
+                        });
+                        dialog.show();
+                        return false;
+                    }
+                });
+            }
 
-                    btnXoa.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            dao = new SanPhamDAO(context);
-                            dao.delete(listSP.get(position).getMaSanPham());
-                            listSP.clear();
-                            Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
-                            //notifyDataSetChanged();
-                            dialog.dismiss();
-                        }
-                    });
-                    dialog.show();
-                    return false;
-                }
-            });
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

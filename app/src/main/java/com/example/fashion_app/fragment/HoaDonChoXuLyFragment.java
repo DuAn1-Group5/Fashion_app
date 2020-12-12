@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.fashion_app.LoginActivity;
 import com.example.fashion_app.R;
 import com.example.fashion_app.adapter.HoaDonAdapter;
 import com.example.fashion_app.dao.HoaDonDAO;
@@ -33,10 +34,19 @@ public class HoaDonChoXuLyFragment extends Fragment implements HoaDonDAO.HoaDonI
         dao = new HoaDonDAO(getContext(), this);
         listHD = new ArrayList<>();
 
-        listHD = dao.getTrangThaiHoaDon("Đang xử lý");
-        adapter = new HoaDonAdapter(getActivity(), listHD);
-        rv_hoadonchoxuly.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv_hoadonchoxuly.setAdapter(adapter);
+        if (LoginActivity.chucVu.equalsIgnoreCase("admin")){
+            listHD = dao.getTrangThaiHoaDon("Đang xử lý", "admin");
+            adapter = new HoaDonAdapter(getActivity(), listHD);
+            rv_hoadonchoxuly.setLayoutManager(new LinearLayoutManager(getContext()));
+            rv_hoadonchoxuly.setAdapter(adapter);
+        }else {
+            listHD = dao.getTrangThaiHoaDon("Đang xử lý", LoginActivity.ma);
+            adapter = new HoaDonAdapter(getActivity(), listHD);
+            rv_hoadonchoxuly.setLayoutManager(new LinearLayoutManager(getContext()));
+            rv_hoadonchoxuly.setAdapter(adapter);
+        }
+
+
         return view;
     }
     public void notifyData(){

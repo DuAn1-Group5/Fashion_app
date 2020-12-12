@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.fashion_app.LoginActivity;
 import com.example.fashion_app.R;
 import com.example.fashion_app.adapter.HoaDonAdapter;
 import com.example.fashion_app.dao.HoaDonDAO;
@@ -33,11 +34,18 @@ public class HoaDonFragment extends Fragment implements HoaDonDAO.HoaDonInterfac
 
         dao = new HoaDonDAO(getContext(), this);
         listHD = new ArrayList<>();
+        if (LoginActivity.chucVu.equalsIgnoreCase("admin")){
+            listHD = dao.getAll();
+            adapter = new HoaDonAdapter(getActivity(), listHD);
+            rv_hoadon.setLayoutManager(new LinearLayoutManager(getContext()));
+            rv_hoadon.setAdapter(adapter);
+        }else{
+            listHD = dao.getAll(LoginActivity.ma);
+            adapter = new HoaDonAdapter(getActivity(), listHD);
+            rv_hoadon.setLayoutManager(new LinearLayoutManager(getContext()));
+            rv_hoadon.setAdapter(adapter);
+        }
 
-        listHD = dao.getAll();
-        adapter = new HoaDonAdapter(getActivity(), listHD);
-        rv_hoadon.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv_hoadon.setAdapter(adapter);
 
         return view;
     }

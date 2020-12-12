@@ -35,6 +35,7 @@ public class ChiTietHoaDonAdapter extends RecyclerView.Adapter<ChiTietHoaDonAdap
     ChiTietHoaDonDAO dao;
 
     public static int soLuong = 0;
+    public static String diaChiGiaoHang;
 
     public ChiTietHoaDonAdapter(Activity context, ArrayList<ChiTietHoaDon> listCTHD) {
         this.context = context;
@@ -126,6 +127,7 @@ public class ChiTietHoaDonAdapter extends RecyclerView.Adapter<ChiTietHoaDonAdap
         ImageView btnDel;
         ImageView ivCong;
         ImageView ivTru;
+        EditText diaChiGiaoHang;
 
         ImageView iv_Menu;
         public RecyclerHolder(@NonNull View itemView) {
@@ -138,6 +140,7 @@ public class ChiTietHoaDonAdapter extends RecyclerView.Adapter<ChiTietHoaDonAdap
             btnDel = itemView.findViewById(R.id.btnDel);
             ivCong = itemView.findViewById(R.id.ivCong);
             ivTru = itemView.findViewById(R.id.ivTru);
+            diaChiGiaoHang = itemView.findViewById(R.id.edtDiaChiGiaoHang);
         }
     }
     public int convertImage(String imgName){

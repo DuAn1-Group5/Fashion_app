@@ -200,22 +200,41 @@ public class LoginActivity extends AppCompatActivity {
 //                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 //                                    startActivity(intent);
 
-                                    Intent i = new Intent(getBaseContext(), MainActivity.class);
-                                    Bundle bundle = new Bundle();
-                                    String email = users.getEmail();
-                                    String name = users.getTenNguoidung();
-                                    tenNguoiDung = name;
-                                    String image = "";
-                                    bundle.putString("email", email);
-                                    bundle.putString("name", name);
-                                    bundle.putString("avatar", image);
-                                    ma = users.getMaNguoidung();
-                                    matkhau = users.getMatKhau();
-                                    chucVu = users.getChucvu();
-                                    i.putExtra("infomation", bundle);
-                                    startActivity(i);
-                                    Toast.makeText(getBaseContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                                    finish();
+                                   if (users.getChucvu().equalsIgnoreCase("admin")){
+                                       Intent i = new Intent(getBaseContext(), MainActivity.class);
+                                       Bundle bundle = new Bundle();
+                                       String email = users.getEmail();
+                                       String name = users.getTenNguoidung();
+                                       tenNguoiDung = name;
+                                       String image = "";
+                                       bundle.putString("email", email);
+                                       bundle.putString("name", users.getHoTenDayDu());
+                                       bundle.putString("avatar", image);
+                                       ma = users.getMaNguoidung();
+                                       matkhau = users.getMatKhau();
+                                       chucVu = users.getChucvu();
+                                       i.putExtra("infomation", bundle);
+                                       startActivity(i);
+                                       Toast.makeText(getBaseContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                       finish();
+                                   }else {
+                                       Intent i = new Intent(getBaseContext(), MainActivity2.class);
+                                       Bundle bundle = new Bundle();
+                                       String email = users.getEmail();
+                                       String name = users.getTenNguoidung();
+                                       tenNguoiDung = name;
+                                       String image = "";
+                                       bundle.putString("email", email);
+                                       bundle.putString("name", users.getHoTenDayDu());
+                                       bundle.putString("avatar", image);
+                                       ma = users.getMaNguoidung();
+                                       matkhau = users.getMatKhau();
+                                       chucVu = users.getChucvu();
+                                       i.putExtra("infomation", bundle);
+                                       startActivity(i);
+                                       Toast.makeText(getBaseContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                       finish();
+                                   }
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Password is wrong", Toast.LENGTH_LONG).show();
                                 }

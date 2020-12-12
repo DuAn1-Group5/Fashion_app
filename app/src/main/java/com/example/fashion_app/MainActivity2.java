@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +27,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity2 extends AppCompatActivity {
+
     DrawerLayout drawer;
     TextView toolbar_title;
     ImageView iv_header_nav;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
         // anh xa view
         Toolbar myToolbar = findViewById(R.id.toolBar);
@@ -79,28 +79,21 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
                     case R.id.nav_home:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new SanPhamNamFragment()).commit();
-                        Toast.makeText(MainActivity.this, "Trang chủ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity2.this, "Trang chủ", Toast.LENGTH_SHORT).show();
                         toolbar_title.setText("Home");
                         break;
                     case R.id.nav_cart:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new GioHangFragment()).commit();
-                        Toast.makeText(MainActivity.this, "Giỏ Hàng", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity2.this, "Giỏ Hàng", Toast.LENGTH_SHORT).show();
                         toolbar_title.setText("Giỏ hàng");
                         break;
-                    case R.id.nav_thongke:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new ThongkeFragment()).commit();
-                        //Toast.makeText(MainActivity.this, "Quản Lý Chi", Toast.LENGTH_SHORT).show();
-                        toolbar_title.setText("Thống kê");
-                        break;
                     case R.id.nav_change:
-                        Intent i = new Intent(MainActivity.this, ChangePassActivity.class);
+                        Intent i = new Intent(MainActivity2.this, ChangePassActivity.class);
                         startActivity(i);
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new Fragment3()).commit();
-                        //Toast.makeText(MainActivity.this, "Thống Kê", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_gioithieu:
                         startActivity(new Intent(getApplicationContext(),GioiThieuActivity.class));
-                        Toast.makeText(MainActivity.this, "Giới Thiệu", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity2.this, "Giới Thiệu", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_caidat:
                         //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new Fragment3()).commit();
@@ -108,20 +101,14 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_hoadon:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new TabFragment()).commit();
-                        Toast.makeText(MainActivity.this, "Hóa đơn", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity2.this, "Hóa đơn", Toast.LENGTH_SHORT).show();
                         toolbar_title.setText("Hóa đơn");
-                        break;
-                    case R.id.nav_loaisanpham:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new LoaiSanPhamFragment()).commit();
-                        Toast.makeText(MainActivity.this, "Loại sản phẩm", Toast.LENGTH_SHORT).show();
-                        toolbar_title.setText("Loại Sản Phẩm");
-                        toolbar_title.setText("Loại sản phẩm");
                         break;
                     case R.id.nav_thoat:
                         FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        startActivity(new Intent(MainActivity2.this, LoginActivity.class));
                         LoginActivity.matkhau = "";
-                        Toast.makeText(MainActivity.this, "Da Thoat", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity2.this, "Da Thoat", Toast.LENGTH_SHORT).show();
                         finish();
                         break;
 

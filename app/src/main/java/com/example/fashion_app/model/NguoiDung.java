@@ -6,24 +6,26 @@ public class NguoiDung {
     private String email;
     private String chucvu;
     private String matKhau;
-
+    private String hoTenDayDu;
 
     public NguoiDung() {
     }
 
-    public NguoiDung(String maNguoidung, String tenNguoidung, String email, String chucvu, String matKhau) {
+    public NguoiDung(String maNguoidung, String tenNguoidung, String email, String chucvu, String matKhau, String hoTenDayDu) {
         this.maNguoidung = maNguoidung;
         this.tenNguoidung = tenNguoidung;
         this.email = email;
         this.chucvu = chucvu;
         this.matKhau = matKhau;
+        this.hoTenDayDu = hoTenDayDu;
     }
 
-    public NguoiDung(String tenNguoidung, String email, String chucvu, String matKhau) {
+    public NguoiDung(String tenNguoidung, String email, String chucvu, String matKhau, String hoTenDayDu) {
         this.tenNguoidung = tenNguoidung;
         this.email = email;
         this.chucvu = chucvu;
         this.matKhau = matKhau;
+        this.hoTenDayDu = hoTenDayDu;
     }
 
     public String getMaNguoidung() {
@@ -64,5 +66,13 @@ public class NguoiDung {
 
     public void setMatKhau(String matKhau) {
         this.matKhau = matKhau;
+    }
+
+    public String getHoTenDayDu() {
+        return hoTenDayDu;
+    }
+
+    public void setHoTenDayDu(String hoTenDayDu) {
+        this.hoTenDayDu = hoTenDayDu;
     }
 }
