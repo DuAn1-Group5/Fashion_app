@@ -119,16 +119,18 @@ public class ThongkeFragment extends Fragment implements HoaDonDAO.HoaDonInterfa
                             Object ngay = map.get("ngay");
                             Object maKhachhang = map.get("maKhachhang");
                             Object diaChiGiaoHang = map.get("diaChiGiaoHang");
+                            Object maHoaDon = ds.getKey();
 
-                            HoaDon hoaDon = new HoaDon(String.valueOf(ngay), String.valueOf(trangThai), String.valueOf(maKhachhang), String.valueOf(price), String.valueOf(diaChiGiaoHang));
-                            listHD.add(hoaDon);
+
                             Log.d("TAG", "onDataChange: "+price);
                             if (trangThai.equals("Đã thanh toán")){
                                 double tValue = Double.parseDouble(String.valueOf(price));
                                 sum += tValue;
 
+                                HoaDon hoaDon = new HoaDon(String.valueOf(ngay), String.valueOf(trangThai), String.valueOf(maKhachhang), String.valueOf(price), String.valueOf(diaChiGiaoHang));
+                                hoaDon.setMaHoadon(String.valueOf(maHoaDon));
+                                listHD.add(hoaDon);
 
-                                //listHD = dao.getTrangThaiHoaDon("Đã thanh toán");
 
                                 adapter = new HoaDonAdapter(getActivity(), listHD);
                                 rcv_thongke.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -141,7 +143,7 @@ public class ThongkeFragment extends Fragment implements HoaDonDAO.HoaDonInterfa
                         if (tvsetThag.equals("")){
                             tvsetThag.setText("Không có hóa đơn");
                         }else{
-                            tvsetThag.setText(sum+"VND");
+                            tvsetThag.setText(sum+"$");
 
                         }
 

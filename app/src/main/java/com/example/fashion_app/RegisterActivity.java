@@ -74,6 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }else{
                     user = new NguoiDung(userName, email,"user", password, hoTen);
                     registerUser(email,password);
+                    Toast.makeText(getApplicationContext(), "Đăng kí thanh công", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -103,5 +104,6 @@ public class RegisterActivity extends AppCompatActivity {
         mDatabase.child(keyID).setValue(user); //
         Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(loginIntent);
+
     }
 }

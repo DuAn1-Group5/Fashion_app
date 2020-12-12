@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser != null){
-                    //Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginActivity.this, "Đăng kí thành công", Toast.LENGTH_SHORT).show();
                     //startActivity(new Intent(LoginActivity.this, MainActivity2.class));
                 }
                 else {
