@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser != null){
                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, MainActivity2.class));
                 }
                 else {
                     Toast.makeText(LoginActivity.this, "Hãy Đăng Nhập", Toast.LENGTH_SHORT).show();
