@@ -69,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     public static String ma;
     public static String matkhau;
     public static String tenNguoiDung;
+    public static String Mail;
     public static String chucVu = "user";
     private FirebaseAuth.AuthStateListener authStateListener;
     @Override
@@ -206,6 +207,7 @@ public class LoginActivity extends AppCompatActivity {
                                        String email = users.getEmail();
                                        String name = users.getTenNguoidung();
                                        tenNguoiDung = name;
+                                       Mail = email;
                                        String image = "";
                                        bundle.putString("email", email);
                                        bundle.putString("name", users.getHoTenDayDu());
@@ -223,6 +225,7 @@ public class LoginActivity extends AppCompatActivity {
                                        String email = users.getEmail();
                                        String name = users.getTenNguoidung();
                                        tenNguoiDung = name;
+                                       Mail = email;
                                        String image = "";
                                        bundle.putString("email", email);
                                        bundle.putString("name", users.getHoTenDayDu());

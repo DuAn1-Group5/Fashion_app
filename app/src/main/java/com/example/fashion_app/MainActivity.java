@@ -21,7 +21,9 @@ import android.widget.Toast;
 import com.example.fashion_app.adapter.HoaDonAdapter;
 import com.example.fashion_app.fragment.GioHangFragment;
 import com.example.fashion_app.fragment.LoaiSanPhamFragment;
+import com.example.fashion_app.fragment.QuanLyNguoiDungFragment;
 import com.example.fashion_app.fragment.SanPhamNamFragment;
+import com.example.fashion_app.fragment.ShowDanhGiaFragment;
 import com.example.fashion_app.fragment.TabFragment;
 import com.example.fashion_app.fragment.ThongkeFragment;
 import com.google.android.material.navigation.NavigationView;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView iv_header_nav;
     TextView tv_NameHead, tv_EmailHead;
     FirebaseAuth firebaseAuth;
+
     private FirebaseAuth.AuthStateListener authStateListener;
 
 
@@ -103,8 +106,9 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Giới Thiệu", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_caidat:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new Fragment3()).commit();
-                        //Toast.makeText(MainActivity.this, "Thống Kê", Toast.LENGTH_SHORT).show();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new ShowDanhGiaFragment()).commit();
+                        Toast.makeText(MainActivity.this, "List FeedBack", Toast.LENGTH_SHORT).show();
+                        toolbar_title.setText("Danh Sách Đánh Giá");
                         break;
                     case R.id.nav_hoadon:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new TabFragment()).commit();
@@ -116,6 +120,15 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Loại sản phẩm", Toast.LENGTH_SHORT).show();
                         toolbar_title.setText("Loại Sản Phẩm");
                         toolbar_title.setText("Loại sản phẩm");
+                        break;
+                    case R.id.nav_feedback:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new ShowDanhGiaFragment()).commit();
+                        Toast.makeText(MainActivity.this, "List FeedBack", Toast.LENGTH_SHORT).show();
+                        toolbar_title.setText("Danh Sách Đánh Giá");
+                        break;
+                    case R.id.nav_user:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new QuanLyNguoiDungFragment()).commit();
+                        toolbar_title.setText("Quản lý người dùng");
                         break;
                     case R.id.nav_thoat:
                         FirebaseAuth.getInstance().signOut();

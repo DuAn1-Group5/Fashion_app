@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/black"
+                android:gravity="center"
+                android:text="Đánh giá sản phẩm"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Xin cảm ơn vì đã tin tưởng và sử dụng Fashion app nếu bạn không phiền xin hãy cho chúng tôi biết mực độ hài lòng cũng như ý kiến riêng về Fashion app để chúng tôi có thể phát triển ứng dụng tốt hơn " />
+        </LinearLayout>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+
+            <RadioButton
+                android:id="@+id/RBtoatvoi"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:text="Tuyệt vời"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/RBrathailong"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:text="Rất hài lòng"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/RBhailong"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:text="Hài lòng"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/RBkhonghailong"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:text="Không hài lòng"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/RBtaotuk"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:text="Lòng không hài"
+                android:textSize="20sp" />
+
+        </RadioGroup>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_margin="8dp">
+
+            <EditText
+                android:id="@+id/edtComment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_btn_white"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="comment of you for us...."
+                android:gravity="start"/>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_margin="8dp">
+
+            <Button
+                android:id="@+id/btnBoQua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Bỏ Qua" />
+
+            <Button
+                android:id="@+id/sendToFxbk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Gữi" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

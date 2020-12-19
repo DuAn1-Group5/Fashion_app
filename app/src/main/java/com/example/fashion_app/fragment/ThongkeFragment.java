@@ -107,7 +107,6 @@ public class ThongkeFragment extends Fragment implements HoaDonDAO.HoaDonInterfa
             public void onClick(View view) {
                 listHD.clear();
                 Query Qdatas = databaseReference.orderByChild("ngay").startAt(btnTuThg.getText().toString()).endAt(btnDenThg.getText().toString());
-
                 Qdatas.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {

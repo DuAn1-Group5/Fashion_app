@@ -18,17 +18,6 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp" />
-        <EditText
-            android:id="@+id/edtMaKhachHang"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:hint="Mã khách hàng"
-            android:inputType="text"
-            android:textColorHint="@color/black"
-            android:layout_height="50dp"/>
 
         <EditText
             android:id="@+id/edtTenKhachHang"
@@ -38,28 +27,6 @@
             android:textColor="@color/black"
             android:layout_marginTop="10dp"
             android:hint="Tên khách hàng"
-            android:inputType="text"
-            android:textColorHint="@color/black"
-            android:layout_height="50dp"/>
-        <EditText
-            android:id="@+id/edtDiaChi"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:hint="Địa chỉ"
-            android:inputType="text"
-            android:textColorHint="@color/black"
-            android:layout_height="50dp"/>
-        <EditText
-            android:id="@+id/edtSoDienThoai"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:hint="Số điện thoại"
             android:inputType="text"
             android:textColorHint="@color/black"
             android:layout_height="50dp"/>
@@ -74,6 +41,18 @@
             android:inputType="text"
             android:textColorHint="@color/black"
             android:layout_height="50dp"/>
+        <EditText
+            android:id="@+id/edtCV"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:hint="Chức vụ"
+            android:inputType="text"
+            android:textColorHint="@color/black"
+            android:layout_height="50dp"/>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -8,12 +8,16 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,10 +25,14 @@ import com.example.fashion_app.adapter.HoaDonAdapter;
 import com.example.fashion_app.fragment.GioHangFragment;
 import com.example.fashion_app.fragment.LoaiSanPhamFragment;
 import com.example.fashion_app.fragment.SanPhamNamFragment;
+import com.example.fashion_app.fragment.ShowDanhGiaFragment;
 import com.example.fashion_app.fragment.TabFragment;
 import com.example.fashion_app.fragment.ThongkeFragment;
+import com.example.fashion_app.model.DanhGia;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 public class MainActivity2 extends AppCompatActivity {
@@ -34,6 +42,8 @@ public class MainActivity2 extends AppCompatActivity {
     ImageView iv_header_nav;
     TextView tv_NameHead, tv_EmailHead;
     FirebaseAuth firebaseAuth;
+    DatabaseReference ref;
+    public static String danhgia;
     private FirebaseAuth.AuthStateListener authStateListener;
 
 
@@ -47,6 +57,7 @@ public class MainActivity2 extends AppCompatActivity {
         toolbar_title = findViewById(R.id.toolbar_title);
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        ref = FirebaseDatabase.getInstance().getReference().child("DanhGia");
 
 
 
@@ -96,8 +107,9 @@ public class MainActivity2 extends AppCompatActivity {
                         Toast.makeText(MainActivity2.this, "Giới Thiệu", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_caidat:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new Fragment3()).commit();
-                        //Toast.makeText(MainActivity.this, "Thống Kê", Toast.LENGTH_SHORT).show();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new ShowDanhGiaFragment()).commit();
+                        Toast.makeText(MainActivity2.this, "List FeedBack", Toast.LENGTH_SHORT).show();
+                        toolbar_title.setText("Danh Sách Đánh Giá");
                         break;
                     case R.id.nav_hoadon:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new TabFragment()).commit();
@@ -105,11 +117,61 @@ public class MainActivity2 extends AppCompatActivity {
                         toolbar_title.setText("Hóa đơn");
                         break;
                     case R.id.nav_thoat:
-                        FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(MainActivity2.this, LoginActivity.class));
-                        LoginActivity.matkhau = "";
-                        Toast.makeText(MainActivity2.this, "Da Thoat", Toast.LENGTH_SHORT).show();
-                        finish();
+                        final Dialog dialog = new Dialog(MainActivity2.this);
+                        dialog.setContentView(R.layout.danhgia_fragment);
+
+                        final Button btnLuu = dialog.findViewById(R.id.sendToFxbk);
+                        final Button btnHuy = dialog.findViewById(R.id.btnBoQua);
+                        final RadioButton rb1,rb2,rb3,rb4,rb5;
+                        rb1 = dialog.findViewById(R.id.RBtoatvoi);
+                        rb2 = dialog.findViewById(R.id.RBrathailong);
+                        rb3 = dialog.findViewById(R.id.RBhailong);
+                        rb4 = dialog.findViewById(R.id.RBkhonghailong);
+                        rb5 = dialog.findViewById(R.id.RBtaotuk);
+                        final EditText edtCment = dialog.findViewById(R.id.edtComment);
+
+
+
+
+                        btnHuy.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialog.dismiss();
+                                FirebaseAuth.getInstance().signOut();
+                                startActivity(new Intent(MainActivity2.this, LoginActivity.class));
+                                LoginActivity.matkhau = "";
+                                Toast.makeText(MainActivity2.this, "Da Thoat", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        });
+                        btnLuu.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if(rb1.isChecked()){
+                                    danhgia = "Tuyệt vời";
+                                }else  if(rb2.isChecked()){
+                                    danhgia = "Rất hài lòng";
+                                }else  if(rb3.isChecked()){
+                                    danhgia = "Hài lòng";
+                                }else  if(rb4.isChecked()){
+                                    danhgia = "Không hài lòng";
+                                }else  if(rb5.isChecked()){
+                                    danhgia = "Lòng không hài";
+                                }
+                                String Comment = edtCment.getText().toString();
+
+                                DanhGia danhGia = new DanhGia(MainActivity2.danhgia,Comment,LoginActivity.tenNguoiDung,LoginActivity.Mail);
+                                ref.push().setValue(danhGia);
+                                Toast.makeText(MainActivity2.this, "Đã gữi", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                                FirebaseAuth.getInstance().signOut();
+                                startActivity(new Intent(MainActivity2.this, LoginActivity.class));
+                                LoginActivity.matkhau = "";
+                                finish();
+                            }
+                        });
+
+                        dialog.show();
                         break;
 
 

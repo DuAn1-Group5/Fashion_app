@@ -18,17 +18,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp" />
-        <EditText
-            android:id="@+id/edtMaNguoiDung"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:hint="Mã người dùng"
-            android:inputType="text"
-            android:textColorHint="@color/black"
-            android:layout_height="50dp"/>
+
 
         <EditText
             android:id="@+id/edtTenNguoiDung"
@@ -43,7 +33,7 @@
             android:layout_height="50dp"/>
 
         <EditText
-            android:id="@+id/edtMatKhau"
+            android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
